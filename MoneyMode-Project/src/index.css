@@ -1,0 +1,228 @@
+/* src/index.css */
+
+/* Remix Icon & Inter font */
+@import url('https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  background-color: #050509;
+  color: #f7f7fb;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Root variables (approximate to match design) */
+:root {
+  --bg-main: #050509;
+  --bg-elevated: #0b0b12;
+  --bg-card: #0f1019;
+  --accent-primary: #fbb040;
+  --accent-secondary: #4f46e5;
+  --accent-soft: rgba(251, 176, 64, 0.12);
+  --accent-border: rgba(251, 176, 64, 0.35);
+  --text-primary: #f9fafb;
+  --text-secondary: #c7cad7;
+  --text-muted: #8b8fa2;
+  --border-subtle: #1c1d2a;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+  --shadow-card: 0 14px 35px rgba(0, 0, 0, 0.7);
+  --max-width: 1120px;
+  --section-y: 96px;
+}
+
+/* Global layout */
+.app {
+  min-height: 100vh;
+  background: radial-gradient(circle at top left, #1b1630 0, #050509 46%);
+  color: var(--text-primary);
+}
+
+main {
+  width: 100%;
+}
+
+/* Shared helpers */
+.section {
+  width: 100%;
+  padding: var(--section-y) 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.section__inner {
+  width: 100%;
+  max-width: var(--max-width);
+}
+
+.section__eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.section__title {
+  font-size: 2.4rem;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin: 0.7rem 0 0.4rem;
+  color: var(--text-primary);
+}
+
+.section__subtitle {
+  margin: 0.2rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.78rem 1.5rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  background: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease-out,
+    color 0.18s ease-out,
+    border-color 0.18s ease-out,
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out;
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, #fbb040, #f97316);
+  color: #050509;
+  box-shadow: 0 14px 30px rgba(248, 148, 50, 0.55);
+}
+
+.btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(248, 148, 50, 0.7);
+}
+
+.btn--ghost {
+  border-color: #27293a;
+  background-color: rgba(15, 16, 25, 0.95);
+  color: var(--text-secondary);
+}
+
+.btn--ghost:hover {
+  background-color: #181827;
+  color: var(--text-primary);
+}
+
+.btn--soft {
+  background-color: var(--accent-soft);
+  border-color: var(--accent-border);
+  color: var(--accent-primary);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.btn__icon {
+  font-size: 1.1rem;
+  display: flex;
+}
+
+/* Forms */
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem;
+  border-radius: var(--radius-pill);
+  background-color: rgba(6, 7, 15, 0.9);
+  border: 1px solid #23243a;
+}
+
+.input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  padding: 0.55rem 0.8rem;
+}
+
+.input-wrapper input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Cards */
+.card {
+  background: radial-gradient(circle at top, #161726 0, #050509 80%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+}
+
+/* Typography utilities */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-accent {
+  color: var(--accent-primary);
+}
+
+/* Responsive globals */
+@media (max-width: 768px) {
+  :root {
+    --section-y: 64px;
+  }
+
+  .section {
+    padding-inline: 1.25rem;
+  }
+
+  .section__title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding-inline: 1rem;
+  }
+
+  .section__title {
+    font-size: 1.7rem;
+  }
+}

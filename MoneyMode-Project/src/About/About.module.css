@@ -1,0 +1,140 @@
+/* src/About/About.module.css */
+.aboutInner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    gap: 3rem;
+    align-items: center;
+}
+
+.aboutText {
+    max-width: 540px;
+}
+
+.aboutBody {
+    margin-top: 1rem;
+    margin-bottom: 1.3rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+.aboutQuoteWrapper {
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.18), #050509);
+    padding: 0.95rem 1rem;
+}
+
+.aboutQuote {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.aboutMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.avatarCard {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.9rem 1rem;
+    border-radius: 16px;
+    border: 1px solid #202131;
+    background: radial-gradient(circle at top, #181827 0, #050509 70%);
+    box-shadow: var(--shadow-soft);
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 18px;
+    background: radial-gradient(circle at top left, #fbb040, #f97316);
+}
+
+.avatarBody {
+    display: flex;
+    flex-direction: column;
+}
+
+.avatarName {
+    margin: 0;
+    font-weight: 600;
+    font-size: 0.98rem;
+}
+
+.avatarRole {
+    margin: 0.1rem 0 0;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.metricsRow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.8rem;
+}
+
+.metric {
+    padding: 0.8rem 0.9rem;
+    border-radius: 14px;
+    border: 1px solid #202131;
+    background-color: rgba(5, 5, 12, 0.95);
+}
+
+.metricNumber {
+    display: block;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.metricLabel {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.aboutFooter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background-color: rgba(15, 16, 25, 0.95);
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+}
+
+.tag i {
+    font-size: 0.95rem;
+    color: var(--accent-primary);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .aboutInner {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2.2rem;
+    }
+
+    .aboutMeta {
+        max-width: 460px;
+    }
+}
+
+@media (max-width: 640px) {
+    .metricsRow {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}

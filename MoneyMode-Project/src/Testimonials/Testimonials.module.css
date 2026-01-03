@@ -1,0 +1,74 @@
+/* src/Testimonials/Testimonials.module.css */
+.inner {
+    display: flex;
+    flex-direction: column;
+    gap: 2.1rem;
+}
+
+.header {
+    max-width: 620px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.3rem;
+}
+
+.card {
+    padding: 0.9rem 0.95rem 0.95rem;
+    border-radius: 16px;
+    background: radial-gradient(circle at top, #181827 0, #050509 70%);
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.5rem;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #f97316, #fbb040);
+}
+
+.meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    gap: 0.08rem;
+    font-size: 0.9rem;
+    color: #fbbf24;
+}
+
+.body {
+    margin: 0;
+    font-size: 0.86rem;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
