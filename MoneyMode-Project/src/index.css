@@ -1,10 +1,12 @@
-/* src/index.css */
-
-/* Remix Icon & Inter font */
+/* -------------------------------------------------------
+   FONTS & ICONS
+------------------------------------------------------- */
 @import url('https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* CSS Reset */
+/* -------------------------------------------------------
+   RESET
+------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -21,48 +23,47 @@ body,
 
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    sans-serif;
-  background-color: #050509;
-  color: #f7f7fb;
+  font-family: 'Inter', sans-serif;
+  background: conic-gradient(from 180deg at 50% 50%,
+      #282828 0deg,
+      #282828 154.0384590625763deg,
+      #393939 360deg);
+  color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Root variables (approximate to match design) */
+/* -------------------------------------------------------
+   GLOBAL VARIABLES
+------------------------------------------------------- */
 :root {
-  --bg-main: #050509;
-  --bg-elevated: #0b0b12;
-  --bg-card: #0f1019;
-  --accent-primary: #fbb040;
-  --accent-secondary: #4f46e5;
-  --accent-soft: rgba(251, 176, 64, 0.12);
-  --accent-border: rgba(251, 176, 64, 0.35);
-  --text-primary: #f9fafb;
-  --text-secondary: #c7cad7;
-  --text-muted: #8b8fa2;
-  --border-subtle: #1c1d2a;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-pill: 999px;
-  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
-  --shadow-card: 0 14px 35px rgba(0, 0, 0, 0.7);
   --max-width: 1120px;
   --section-y: 96px;
+
+  /* Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-light: #C0C0C0;
+  --color-gray-mid: #D9D9D9;
+  --color-gray-dark: #282828;
+  --color-border: #393939;
+
+  /* Buttons */
+  --btn-radius: 12px;
 }
 
-/* Global layout */
+/* -------------------------------------------------------
+   GLOBAL LAYOUT
+------------------------------------------------------- */
 .app {
   min-height: 100vh;
-  background: radial-gradient(circle at top left, #1b1630 0, #050509 46%);
-  color: var(--text-primary);
+  width: 100%;
 }
 
 main {
   width: 100%;
 }
 
-/* Shared helpers */
+/* Section wrapper */
 .section {
   width: 100%;
   padding: var(--section-y) 1.5rem;
@@ -75,12 +76,15 @@ main {
   max-width: var(--max-width);
 }
 
+/* -------------------------------------------------------
+   TYPOGRAPHY HELPERS
+------------------------------------------------------- */
 .section__eyebrow {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent-primary);
+  color: var(--color-gray-mid);
 }
 
 .section__title {
@@ -88,121 +92,92 @@ main {
   line-height: 1.08;
   letter-spacing: -0.03em;
   margin: 0.7rem 0 0.4rem;
-  color: var(--text-primary);
+  color: var(--color-white);
 }
 
 .section__subtitle {
   margin: 0.2rem 0 0;
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--text-secondary);
+  color: #e5e5e5;
   max-width: 520px;
 }
 
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
+/* -------------------------------------------------------
+   BUTTON SYSTEM (NEW)
+------------------------------------------------------- */
+
+/* PRIMARY BUTTON */
+.btn-primary {
+  border-radius: var(--btn-radius);
+  background: var(--color-gray-light);
+  display: flex;
+  padding: 10px;
   justify-content: center;
-  gap: 0.45rem;
-  padding: 0.78rem 1.5rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid transparent;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  background: none;
-  color: var(--text-primary);
-  cursor: pointer;
-  transition:
-    background-color 0.18s ease-out,
-    color 0.18s ease-out,
-    border-color 0.18s ease-out,
-    transform 0.18s ease-out,
-    box-shadow 0.18s ease-out;
-}
-
-.btn--primary {
-  background: linear-gradient(135deg, #fbb040, #f97316);
-  color: #050509;
-  box-shadow: 0 14px 30px rgba(248, 148, 50, 0.55);
-}
-
-.btn--primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 18px 40px rgba(248, 148, 50, 0.7);
-}
-
-.btn--ghost {
-  border-color: #27293a;
-  background-color: rgba(15, 16, 25, 0.95);
-  color: var(--text-secondary);
-}
-
-.btn--ghost:hover {
-  background-color: #181827;
-  color: var(--text-primary);
-}
-
-.btn--soft {
-  background-color: var(--accent-soft);
-  border-color: var(--accent-border);
-  color: var(--accent-primary);
-}
-
-.btn--full {
-  width: 100%;
-}
-
-.btn__icon {
-  font-size: 1.1rem;
-  display: flex;
-}
-
-/* Forms */
-.input-wrapper {
-  display: flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem;
-  border-radius: var(--radius-pill);
-  background-color: rgba(6, 7, 15, 0.9);
-  border: 1px solid #23243a;
-}
+  gap: 10px;
 
-.input-wrapper input {
-  flex: 1;
+  color: var(--color-gray-dark);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1.28px;
   border: none;
-  outline: none;
+  cursor: pointer;
+}
+
+/* SECONDARY BUTTON */
+.btn-secondary {
+  border-radius: var(--btn-radius);
+  border: 1px solid var(--color-gray-mid);
   background: transparent;
-  color: var(--text-primary);
-  font-size: 0.9rem;
-  padding: 0.55rem 0.8rem;
+
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--color-gray-mid);
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 1.28px;
+  cursor: pointer;
 }
 
-.input-wrapper input::placeholder {
-  color: var(--text-muted);
+/* -------------------------------------------------------
+   EMAIL INPUT (NEW)
+------------------------------------------------------- */
+.email-input {
+  display: inline-flex;
+  padding: 20px 185px 20px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border: 1px solid var(--color-border);
+  background: var(--color-gray-light);
+
+  color: var(--color-gray-dark);
+  font-size: 20px;
+  font-weight: 400;
+  opacity: 0.7;
+
+  /* border-radius: var(--btn-radius); */
+  outline: none;
 }
 
-/* Cards */
+/* -------------------------------------------------------
+   CARDS (OPTIONAL GLOBAL)
+------------------------------------------------------- */
 .card {
-  background: radial-gradient(circle at top, #161726 0, #050509 80%);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-card);
+  background: #2f2f2f;
+  border-radius: 16px;
+  border: 1px solid #3a3a3a;
 }
 
-/* Typography utilities */
-.text-muted {
-  color: var(--text-muted);
-}
-
-.text-accent {
-  color: var(--accent-primary);
-}
-
-/* Responsive globals */
+/* -------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------- */
 @media (max-width: 768px) {
   :root {
     --section-y: 64px;
@@ -215,6 +190,16 @@ main {
   .section__title {
     font-size: 1.9rem;
   }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 24px;
+  }
+
+  .email-input {
+    padding: 16px 20px;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -224,5 +209,10 @@ main {
 
   .section__title {
     font-size: 1.7rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 20px;
   }
 }
