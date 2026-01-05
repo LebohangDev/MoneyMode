@@ -52,7 +52,7 @@ function Testimonials() {
           <h2 className="section__title">What operators are saying</h2>
           <p className="section__subtitle">
             MoneyMode operators around the world are using these systems to sign creators, run accounts, and earn like
-            real managers — not spectators.
+            real managers not spectators.
           </p>
         </motion.div>
 
