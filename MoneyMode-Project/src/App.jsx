@@ -6,7 +6,9 @@ import About from './About/About.jsx';
 import Video from "./Video/Video.jsx";
 import StarterKit from "./Starter Kit/StarterKit.jsx";
 import Product from './Product/Product.jsx';
+import Products from './Products/Products.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
+import Contact from './Contact/Contact.jsx';
 import Gallery from './Gallery/Gallery.jsx';
 import Footer from './Footer/Footer.jsx';
 
@@ -19,8 +21,10 @@ function App() {
         <About />
         <Video />
         <StarterKit />
-        <Product />
+        {/* <Product /> */}
+        <Products />
         <Testimonials />
+        <Contact />
         <Gallery />
       </main>
       <Footer />
