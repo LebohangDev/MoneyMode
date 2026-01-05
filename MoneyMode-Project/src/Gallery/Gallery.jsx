@@ -1,71 +1,75 @@
-// src/Gallery/Gallery.jsx
-import React from 'react';
-import { motion } from 'framer-motion';
-import { fadeIn, slideUp, staggerContainer } from '../animations.js';
-import styles from './Gallery.module.css';
+import React, { useEffect, useRef } from "react";
+import styles from "./Gallery.module.css";
 
-const galleryItems = [
-  {
-    id: 'desk',
-    title: 'Operator at work',
-    subtitle: 'A glimpse into my world',
-    image: '/images/gallery-1.jpg'
-  },
-  {
-    id: 'calls',
-    title: 'Client calls & breakdowns',
-    subtitle: 'Strategy over screenshots',
-    image: '/images/gallery-2.jpg'
-  },
-  {
-    id: 'systems',
-    title: 'Systems & dashboards',
-    subtitle: 'What actually runs a creator agency',
-    image: '/images/gallery-3.jpg'
-  }
+const IMAGES = [
+  "/Images/gallery 1.png",
+  "/Images/gallery 2.png",
+  "/Images/gallery 3.png",
+  "/Images/gallery 4.png",
 ];
 
-function Gallery() {
-  return (
-    <section className={`section ${styles.section}`}>
-      <motion.div
-        className={`section__inner ${styles.inner}`}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
-        variants={staggerContainer(0.12, 0.1)}
-      >
-        <motion.div className={styles.header} variants={fadeIn(0.02)}>
-          <p className="section__eyebrow">A glimpse into my world</p>
-          <h2 className="section__title">Behind the MoneyMode systems</h2>
-          <p className="section__subtitle">
-            This isn&apos;t about screenshots. It&apos;s about the real work that happens behind the scenes to run
-            profitable creator accounts.
-          </p>
-        </motion.div>
+const LOOP_IMAGES = [...IMAGES, ...IMAGES]; // Duplicate for seamless loop
 
-        <motion.div className={styles.grid} variants={fadeIn(0.08)}>
-          {galleryItems.map((item, index) => (
-            <motion.figure
-              key={item.id}
-              className={styles.card}
-              variants={slideUp(0.08 + index * 0.04)}
-            >
-              <div className={styles.imageWrapper}>
-                <div
-                  className={styles.image}
-                  style={{ backgroundImage: `url(${item.image})` }}
-                />
-                <div className={styles.imageOverlay} />
-              </div>
-              <figcaption className={styles.caption}>
-                <p className={styles.captionTitle}>{item.title}</p>
-                <p className={styles.captionSub}>{item.subtitle}</p>
-              </figcaption>
-            </motion.figure>
+function Gallery() {
+  const scrollRef = useRef(null);
+
+  // Auto-scroll effect
+  useEffect(() => {
+  const container = scrollRef.current;
+  if (!container) return;
+
+  const scrollStep = 0.5;
+  let animationId;
+
+  const autoScroll = () => {
+    // Reset when we've scrolled halfway (first image set)
+    if (container.scrollLeft >= container.scrollWidth / 2) {
+      container.scrollLeft = 0;
+    } else {
+      container.scrollLeft += scrollStep;
+    }
+
+    animationId = requestAnimationFrame(autoScroll);
+  };
+
+  animationId = requestAnimationFrame(autoScroll);
+
+  const stopScroll = () => cancelAnimationFrame(animationId);
+  const resumeScroll = () => {
+    animationId = requestAnimationFrame(autoScroll);
+  };
+
+  container.addEventListener("mouseenter", stopScroll);
+  container.addEventListener("mouseleave", resumeScroll);
+
+  return () => {
+    cancelAnimationFrame(animationId);
+    container.removeEventListener("mouseenter", stopScroll);
+    container.removeEventListener("mouseleave", resumeScroll);
+  };
+}, []);
+
+
+  return (
+    <section id="gallery" className="section">
+      <div className={`section__inner ${styles.wrapper}`}>
+
+        {/* HEADING */}
+        <h2 className={styles.heading}>A Glimpse Into My World</h2>
+
+        {/* BACKGROUND BAR */}
+        <div className={styles.backgroundBar}></div>
+
+        {/* CAROUSEL */}
+        <div className={styles.carousel} ref={scrollRef}>
+          {LOOP_IMAGES.map((src, index) => (
+            <div key={index} className={styles.imageWrapper}>
+              <img src={src} alt={`Gallery ${index}`} className={styles.image} />
+            </div>
           ))}
-        </motion.div>
-      </motion.div>
+        </div>
+
+      </div>
     </section>
   );
 }
