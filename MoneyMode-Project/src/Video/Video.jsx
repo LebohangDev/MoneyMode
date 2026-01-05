@@ -9,7 +9,7 @@ function Video() {
         {/* QUOTE */}
         <div className={styles.quoteBlock}>
           <p className={styles.quote}>
-            “MoneyMode isn’t theory — it’s built from real management experience,
+            “MoneyMode isn’t theory it’s built from real management experience,
             real wins, and real lessons learned.”
           </p>
         </div>
@@ -18,7 +18,7 @@ function Video() {
         <div className={styles.videoContainer}>
           <iframe
             className={styles.video}
-            src="https://www.youtube.com/embed/placeholder"
+            src="https://www.youtube.com/embed/TxdDeYXFoBk?si=oMNFyvQPPgOcxJ-P"
             title="MoneyMode Video"
             frameBorder="0"
             allowFullScreen
@@ -38,7 +38,7 @@ function Video() {
             {/* FEATURE 1 */}
             <div className={styles.featureItem}>
               <img
-                src="/icons/insider.png"
+                src="/Icons/knowledge-icon.png"
                 alt="Insider Knowledge"
                 className={styles.icon}
               />
@@ -48,7 +48,7 @@ function Video() {
             {/* FEATURE 2 */}
             <div className={styles.featureItem}>
               <img
-                src="/icons/frameworks.png"
+                src="/Icons/framework-icon.png"
                 alt="Proven Frameworks"
                 className={styles.icon}
               />
@@ -58,7 +58,7 @@ function Video() {
             {/* FEATURE 3 */}
             <div className={styles.featureItem}>
               <img
-                src="/icons/strategy.png"
+                src="/Icons/strategy-icon.png"
                 alt="Execution Strategies"
                 className={styles.icon}
               />
