@@ -1,0 +1,85 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+}
+
+/* LEFT SIDE */
+.left {
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.heading {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    text-align: left;
+}
+
+.text {
+    font-size: 22px;
+    font-weight: 400;
+    color: #e5e5e5;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* MoneyMode styling */
+.money {
+    color: #282828;
+    font-weight: inherit;
+}
+
+.mode {
+    /* baby blue */
+    color: #0088FF;
+    font-weight: inherit;
+}
+
+/* RIGHT SIDE LOGO */
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 420px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+    .wrapper {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left {
+        align-items: center;
+    }
+
+    .heading {
+        text-align: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .heading {
+        font-size: 32px;
+    }
+
+    .text {
+        font-size: 18px;
+    }
+
+    .logo {
+        width: 300px;
+    }
+}
