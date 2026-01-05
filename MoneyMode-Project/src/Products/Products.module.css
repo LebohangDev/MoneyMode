@@ -1,0 +1,76 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+/* TOP LINE */
+.topLine {
+    font-size: 28px;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    max-width: 800px;
+}
+
+/* GRID */
+.grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* PRODUCT CARD */
+.card {
+    width: 300px;
+    padding: 20px;
+    border-radius: 12px;
+    background: #393939;
+    cursor: pointer;
+    transition: 0.2s ease;
+    text-align: center;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+/* SELECTED HIGHLIGHT */
+.selected {
+    outline: 3px solid #c0c0c0;
+    background: #4a4a4a;
+}
+
+/* FREE TAG */
+.tag {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    /* background: #c0c0c0; */
+    background: #D90808;
+    /* color: #282828; */
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* IMAGE */
+.image {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+}
+
+/* NAME */
+.name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+}
