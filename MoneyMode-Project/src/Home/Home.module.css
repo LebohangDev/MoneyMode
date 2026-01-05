@@ -14,19 +14,23 @@
 .inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 3rem;
+    align-items: start;
+    justify-items: center;
+    gap: 4rem;
+    width: 100%;
 }
 
 /* LEFT IMAGE */
 .imageWrapper {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .heroImage {
-    width: 100%;
-    max-width: 480px;
+    width: 40rem;
+    height: auto;
+    filter: grayscale(100%);
     object-fit: contain;
 }
 
@@ -34,15 +38,23 @@
 .content {
     display: flex;
     flex-direction: column;
-    max-width: 520px;
+    padding-top: 2rem;
+
 }
 
 .heading {
-    font-size: 2.8rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 200;
     color: #ffffff;
     line-height: 1.1;
     margin: 0;
+}
+
+.heading span {
+    font-weight: 700;
+    background: linear-gradient(to right, #FFFFFF 0%, #999999 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 /* LINE UNDER HEADING */
@@ -60,21 +72,57 @@
     color: #e5e5e5;
     margin-bottom: 1.8rem;
     line-height: 1.6;
+    margin-top: 0;
 }
 
 /* EMAIL INPUT */
 .emailRow {
     margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0;
 }
 
-/* .emailInput {
-    width: 100%;
-    padding: 0.9rem 1rem;
-    border-radius: 8px;
+.emailRow button {
+    border-radius: 0;
     border: none;
-    outline: none;
-    font-size: 1rem;
-} */
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #464646;
+    color: #ffffff;
+    height: 3.5rem;
+    transition: all 0.2s ease;
+    padding: 0 1.5rem;
+}
+
+.emailRow button:disabled {
+    cursor: not-allowed;
+    background: #2a2a2a;
+    color: #555555;
+}
+
+.emailRow button:hover:not(:disabled) {
+    background: #7dd3fc;
+    color: #000;
+}
+
+.emailRow input {
+    border-radius: 0;
+    border: none;
+    width: 71%;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000;
+    height: 3.5rem;
+    padding: 0 1rem;
+}
+
+
+
+
 
 /* CTA BUTTONS */
 .buttons {
@@ -122,17 +170,167 @@
 }
 
 /* RESPONSIVE */
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     .inner {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
         text-align: center;
-    }
-
-    .buttons {
-        justify-content: center;
+        gap: 3rem;
     }
 
     .imageWrapper {
-        order: -1;
+        width: 100%;
+        /* Image is first in DOM, so it stays on top */
+    }
+
+    .heroImage {
+        width: 100%;
+        max-width: 500px;
+        /* Constrain image size on mobile */
+    }
+
+    .content {
+        padding-top: 0;
+        align-items: center;
+    }
+
+    .heading {
+        font-size: 2.5rem;
+        /* Scale down heading */
+    }
+
+    .subheading {
+        max-width: 500px;
+        /* Readability */
+    }
+
+    .buttons {
+        align-items: center;
+    }
+
+    .emailRow {
+        flex-direction: column;
+        /* Stack input and button on small mobile */
+        width: 100%;
+        max-width: 400px;
+        gap: 10px;
+    }
+
+    .emailRow input,
+    .emailRow button {
+        width: 100%;
+        height: 3.5rem;
+        border-radius: 8px;
+        /* Rounded corners for stacked look */
+    }
+
+    .emailRow input {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+@media (min-width: 768px) and (max-width: 1279px) and (orientation: landscape) {
+    .heroImage {
+        width: 100%;
+        max-width: 500px;
+    }
+
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1279px) and (orientation: portrait) {
+    .homeSection {
+        padding-bottom: 0;
+    }
+
+    .inner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        align-items: center;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .imageWrapper {
+        width: 100%;
+        /* Image is first in DOM, so it stays on top */
+    }
+
+    .heroImage {
+        width: 100%;
+        max-width: 500px;
+        /* Constrain image size on mobile */
+    }
+
+    .content {
+        padding-top: 0;
+        align-items: center;
+    }
+
+    .heading {
+        font-size: 2.5rem;
+        /* Scale down heading */
+    }
+
+    .subheading {
+        max-width: 500px;
+        /* Readability */
+    }
+
+    .buttons {
+        align-items: center;
+    }
+
+    .emailRow {
+        flex-direction: column;
+        /* Stack input and button on small mobile */
+        width: 100%;
+        max-width: 400px;
+        gap: 10px;
+    }
+
+    .emailRow input,
+    .emailRow button {
+        width: 100%;
+        height: 3.5rem;
+        border-radius: 8px;
+        /* Rounded corners for stacked look */
+    }
+
+
+
+    .emailRow input {
+        padding: 0 1rem;
+    }
+}
+
+
+
+/* iPad Pro PORTRAIT only */
+@media only screen and (device-width: 1024px) and (device-height: 1366px) and (orientation: portrait) {
+
+    .inner {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        align-items: center;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .heroImage {
+        display: block;
     }
 }

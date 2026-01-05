@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./SelectedProduct.module.css";
 
 function SelectedProduct({ product }) {
+  const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
+
+  const checkEmailValidation = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    setIsValidEmail(regex.test(email));
+  };
+
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    checkEmailValidation(newEmail);
+  };
+
   return (
     <section id="selected-product" className="section">
       <div className={`section__inner ${styles.wrapper}`}>
@@ -26,6 +40,8 @@ function SelectedProduct({ product }) {
               type="email"
               placeholder="Enter your email address"
               className="email-input"
+              value={email}
+              onChange={handleEmailChange}
             />
 
             {/* CTA BUTTON */}
@@ -34,9 +50,10 @@ function SelectedProduct({ product }) {
                 product.type === "free"
                   ? "btn-primary"
                   : product.type === "paid"
-                  ? "btn-primary"
-                  : "btn-secondary"
+                    ? "btn-primary"
+                    : "btn-secondary"
               }
+              disabled={!isValidEmail}
             >
               {product.cta}
             </button>
@@ -45,8 +62,8 @@ function SelectedProduct({ product }) {
               {product.type === "free"
                 ? "No spam. PDF sent instantly."
                 : product.type === "paid"
-                ? "Instant digital download."
-                : "We will review your application and contact you."}
+                  ? "Instant digital download."
+                  : "We will review your application and contact you."}
             </p>
           </div>
 

@@ -40,7 +40,7 @@ function Products() {
 
   return (
     <>
-      <section id="products" className="section">
+      <section id="product" className="section">
         <div className={`section__inner ${styles.wrapper}`}>
 
           {/* TOP LINE */}
@@ -53,10 +53,9 @@ function Products() {
             {PRODUCTS.map((product) => (
               <div
                 key={product.id}
-                className={`${styles.card} ${
-                  selected.id === product.id ? styles.selected : ""
-                }`}
-                onClick={() => setSelected(product)}
+                className={`${styles.card} ${selected.id === product.id ? styles.selected : ""
+                  }`}
+                onClick={() => { setSelected(product); window.location.href = "#selected-product"; }}
               >
                 {product.tag && (
                   <span className={styles.tag}>{product.tag}</span>

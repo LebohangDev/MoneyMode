@@ -25,6 +25,67 @@
     font-weight: 500;
     color: #e5e5e5;
     margin: 0 0 10px 0;
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+}
+
+.subheading span {
+    font-weight: 700;
+    font-size: 7rem;
+    background: linear-gradient(to right, #FFFFFF 0%, #999999 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 0;
+}
+
+.subheading .text {
+    display: flex;
+    flex-direction: column;
+    line-height: 2rem;
+    padding-top: 1rem;
+
+}
+
+.subheading .text p {
+    margin: 0;
+}
+
+/* EMAIL INPUT & BUTTON STYLING */
+.left input[type="email"] {
+    border-radius: 0;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000;
+    height: 3.5rem;
+    padding: 0 1rem;
+}
+
+.left button {
+    border-radius: 0;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #464646;
+    color: #ffffff;
+    height: 3.5rem;
+    transition: all 0.2s ease;
+    padding: 0 1.5rem;
+}
+
+.left button:disabled {
+    cursor: not-allowed;
+    background: #2a2a2a;
+    color: #555555;
+}
+
+.left button:hover:not(:disabled) {
+    background: #7dd3fc;
+    color: #000;
 }
 
 /* NOTE UNDER BUTTON */
@@ -64,6 +125,8 @@
     .right {
         width: 80%;
     }
+
+
 }
 
 @media (max-width: 600px) {
@@ -78,4 +141,16 @@
     .right {
         width: 100%;
     }
+
+    .left input[type="email"] {
+        width: 100%;
+    }
+
+    .left button {
+        width: 100%;
+    }
+
+
+
+
 }

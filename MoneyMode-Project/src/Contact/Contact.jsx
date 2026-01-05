@@ -18,12 +18,12 @@ function Contact() {
             {" "}is here to help.
           </p>
 
-          <button className="btn-primary">
+          <button className="btn-secondary">
             Contact
             <span>
-                <span className={styles.money}>Money</span>
-                <span className={styles.mode}>Mode</span>
-            </span>    
+              <span className={styles.money}>Money</span>
+              <span className={styles.mode}>Mode</span>
+            </span>
           </button>
         </div>
 

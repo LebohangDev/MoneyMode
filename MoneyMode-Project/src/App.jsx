@@ -5,7 +5,6 @@ import Home from './Home/Home.jsx';
 import About from './About/About.jsx';
 import Video from "./Video/Video.jsx";
 import StarterKit from "./Starter Kit/StarterKit.jsx";
-import Product from './Product/Product.jsx';
 import Products from './Products/Products.jsx';
 import Testimonials from './Testimonials/Testimonials.jsx';
 import Contact from './Contact/Contact.jsx';
@@ -15,19 +14,24 @@ import Footer from './Footer/Footer.jsx';
 function App() {
   return (
     <div className="app">
-      <Nav />
-      <main>
+      <div className="header">
+        <Nav className="nav" />
+      </div>
+
+      <div className="main">
         <Home />
         <About />
         <Video />
         <StarterKit />
-        {/* <Product /> */}
         <Products />
         <Testimonials />
         <Contact />
         <Gallery />
-      </main>
-      <Footer />
+      </div>
+
+      <div className="footer">
+        <Footer />
+      </div>
     </div>
   );
 }

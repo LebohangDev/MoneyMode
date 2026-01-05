@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./StarterKit.module.css";
 
 function StarterKit() {
+  const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
+
+  const checkEmailValidation = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    setIsValidEmail(regex.test(email));
+  };
+
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    checkEmailValidation(newEmail);
+  };
+
   return (
     <section id="starter-kit" className="section">
       <div className={`section__inner ${styles.wrapper}`}>
@@ -14,19 +28,28 @@ function StarterKit() {
           </h2>
 
           <p className={styles.subheading}>
-            7 steps to sign your first creator
+            <span>7</span>
+            <div className={styles.text}>
+              <p>Steps</p>
+              <p>To Sign Your First Creator</p>
+            </div>
           </p>
 
-          {/* EMAIL FIELD */}
+
           <input
             type="email"
             placeholder="Enter your email address"
             className="email-input"
+            value={email}
+            onChange={handleEmailChange}
           />
 
           {/* BUTTON */}
-          <button className="btn-primary">
-            Get FREE Starter Kit
+          <button
+            className="btn-primary"
+            disabled={!isValidEmail}
+          >
+            Get Free Starter Kit
           </button>
 
           {/* NOTE */}

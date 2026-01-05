@@ -1,8 +1,8 @@
 /* -------------------------------------------------------
    FONTS & ICONS
 ------------------------------------------------------- */
-@import url('https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* RemixIcon moved to index.html */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* -------------------------------------------------------
    RESET
@@ -32,11 +32,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+p {
+  font-family: 'Inter', sans-serif;
+}
+
+
 /* -------------------------------------------------------
    GLOBAL VARIABLES
 ------------------------------------------------------- */
 :root {
-  --max-width: 1120px;
+  --max-width: 1300px;
   --section-y: 96px;
 
   /* Colors */
@@ -49,17 +55,87 @@ body {
 
   /* Buttons */
   --btn-radius: 12px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 /* -------------------------------------------------------
    GLOBAL LAYOUT
 ------------------------------------------------------- */
+/* -------------------------------------------------------
+   GLOBAL LAYOUT
+------------------------------------------------------- */
 .app {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* -------------------------------------------------------
+   GRID SPANS
+------------------------------------------------------- */
+.header {
+  grid-column: 1 / -1;
   width: 100%;
 }
 
+.main {
+  grid-column: 1 / -1;
+  width: 100%;
+  /* No default flex centering, let sections handle it */
+}
+
+.footer {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* -------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------- */
+@media (max-width: 767px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  :root {
+    --section-y: 64px;
+  }
+
+  .section {
+    padding-inline: 1.25rem;
+  }
+
+  .section__title {
+    font-size: 1.9rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 24px;
+  }
+
+  .email-input {
+    padding: 16px 20px;
+    font-size: 18px;
+  }
+}
+
+
+
+
 main {
+  width: 100%;
+}
+
+.nav {
   width: 100%;
 }
 
@@ -142,6 +218,32 @@ main {
   font-weight: 700;
   letter-spacing: 1.28px;
   cursor: pointer;
+
+  /* Hover Effect */
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.btn-secondary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--color-gray-mid);
+  z-index: -1;
+  transition: width 0.3s ease;
+}
+
+.btn-secondary:hover {
+  color: var(--color-gray-dark);
+}
+
+.btn-secondary:hover::before {
+  width: 100%;
 }
 
 /* -------------------------------------------------------

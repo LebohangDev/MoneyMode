@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import { useInView, useSpring, useTransform, motion } from "framer-motion";
 import styles from "./About.module.css";
 
 function About() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  const springConfig = { duration: 2000, bounce: 0 };
+
+  const count1 = useSpring(0, springConfig);
+  const count2 = useSpring(0, springConfig);
+  const count3 = useSpring(0, springConfig);
+
+  const display1 = useTransform(count1, (value) => Math.round(value));
+  const display2 = useTransform(count2, (value) => Math.round(value));
+  const display3 = useTransform(count3, (value) => Math.round(value));
+
+  useEffect(() => {
+    if (isInView) {
+      count1.set(10);
+      count2.set(50);
+      count3.set(100);
+    }
+  }, [isInView, count1, count2, count3]);
+
   return (
     <section id="about" className="section">
       <div className={`section__inner ${styles.wrapper}`}>
@@ -30,19 +52,25 @@ function About() {
           </div>
 
           {/* BLOCK 2 — STATS */}
-          <div className={styles.statsBlock}>
+          <div ref={ref} className={styles.statsBlock}>
             <div className={styles.statItem}>
-              <p className={styles.statNumber}>10</p>
+              <p className={styles.statNumber}>
+                <motion.span>{display1}</motion.span>
+              </p>
               <p className={styles.statLabel}>Years Experience</p>
             </div>
 
             <div className={styles.statItem}>
-              <p className={styles.statNumber}>50+</p>
+              <p className={styles.statNumber}>
+                <motion.span>{display2}</motion.span>+
+              </p>
               <p className={styles.statLabel}>Creators Managed</p>
             </div>
 
             <div className={styles.statItem}>
-              <p className={styles.statNumber}>100+</p>
+              <p className={styles.statNumber}>
+                <motion.span>{display3}</motion.span>+
+              </p>
               <p className={styles.statLabel}>Clients</p>
             </div>
           </div>

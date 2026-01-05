@@ -41,6 +41,43 @@
     line-height: 1.5;
 }
 
+/* EMAIL INPUT & BUTTON STYLING */
+.left input[type="email"] {
+    border-radius: 0;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #000;
+    height: 3.5rem;
+    padding: 0 1rem;
+}
+
+.left button {
+    border-radius: 0;
+    border: none;
+    font-size: 0.7rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: #464646;
+    color: #ffffff;
+    height: 3.5rem;
+    transition: all 0.2s ease;
+    padding: 0 1.5rem;
+}
+
+.left button:disabled {
+    cursor: not-allowed;
+    background: #2a2a2a;
+    color: #555555;
+}
+
+.left button:hover:not(:disabled) {
+    background: #7dd3fc;
+    color: #000;
+}
+
 .note {
     font-size: 16px;
     color: #d9d9d9;
