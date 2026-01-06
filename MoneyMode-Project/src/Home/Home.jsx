@@ -90,7 +90,7 @@ function Home() {
               Start your MoneyMode journey
             </p>
 
-            <i className={`ri-arrow-down-line ${styles.downIcon} `} />
+            <i className={`ri-arrow-down-double-line ${styles.downIcon} `} />
           </div>
         </motion.div>
       </div>

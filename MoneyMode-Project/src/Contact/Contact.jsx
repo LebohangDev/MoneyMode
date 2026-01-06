@@ -17,13 +17,11 @@ function Contact() {
             <span className={styles.mode}>Mode</span>
             {" "}is here to help.
           </p>
-
-          <button className="btn-secondary">
-            Contact
-            <span>
-              <span className={styles.money}>Money</span>
-              <span className={styles.mode}>Mode</span>
-            </span>
+          <button type="button" className="btn--contact">
+              Contact MoneyMode
+              <span className="btn__icon">
+                <i className="ri-arrow-right-up-line" />
+              </span>
           </button>
         </div>
 
