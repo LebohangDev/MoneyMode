@@ -51,7 +51,7 @@ function SelectedProduct({ product }) {
                   ? "btn-primary"
                   : product.type === "paid"
                     ? "btn-primary"
-                    : "btn-secondary"
+                    : "btn-primary"
               }
               disabled={!isValidEmail}
             >

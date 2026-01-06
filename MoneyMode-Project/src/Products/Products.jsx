@@ -49,7 +49,7 @@ function Products() {
           </p>
 
           {/* PRODUCT CARDS */}
-          <div className={styles.grid}>
+          {/* <div className={styles.grid}>
             {PRODUCTS.map((product) => (
               <div
                 key={product.id}
@@ -70,7 +70,35 @@ function Products() {
                 <p className={styles.name}>{product.name}</p>
               </div>
             ))}
+          </div> */}
+          
+          {/* PRODUCT CARDS */}
+          <div className={styles.productsContainer}>
+            <div className={styles.bgBar}></div>
+
+            <div className={styles.grid}>
+              {PRODUCTS.map((product) => (
+                <div
+                  key={product.id}
+                  className={`${styles.card} ${
+                    selected.id === product.id ? styles.selected : ""
+                  }`}
+                  onClick={() => {
+                    setSelected(product);
+                    window.location.href = "#selected-product";
+                  }}
+                >
+                  {product.tag && <span className={styles.tag}>{product.tag}</span>}
+
+                  <img src={product.image} alt={product.name} className={styles.image} />
+
+                  <p className={styles.name}>{product.name}</p>
+                </div>
+              ))}
+            </div>
           </div>
+
+
         </div>
       </section>
 
