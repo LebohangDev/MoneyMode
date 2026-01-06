@@ -38,7 +38,7 @@ function Video() {
             {/* FEATURE 1 */}
             <div className={styles.featureItem}>
               <img
-                src="/Icons/knowledge-icon.png"
+                src="Icons/knowledge-icon.png"
                 alt="Insider Knowledge"
                 className={styles.icon}
               />
@@ -48,7 +48,7 @@ function Video() {
             {/* FEATURE 2 */}
             <div className={styles.featureItem}>
               <img
-                src="/Icons/framework-icon.png"
+                src="Icons/framework-icon.png"
                 alt="Proven Frameworks"
                 className={styles.icon}
               />
@@ -58,7 +58,7 @@ function Video() {
             {/* FEATURE 3 */}
             <div className={styles.featureItem}>
               <img
-                src="/Icons/strategy-icon.png"
+                src="Icons/strategy-icon.png"
                 alt="Execution Strategies"
                 className={styles.icon}
               />

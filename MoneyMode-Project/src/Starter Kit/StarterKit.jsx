@@ -61,7 +61,7 @@ function StarterKit() {
         {/* RIGHT SIDE IMAGE */}
         <div className={styles.right}>
           <img
-            src="/Images/free-ebook-cover.png"
+            src="Images/free-ebook-cover.png"
             alt="Starter Kit Ebook"
             className={styles.image}
           />

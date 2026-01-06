@@ -9,35 +9,35 @@ const testimonials = [
     name: 'Frank Flores',
     text: 'This program really helped me take the next step in creator management.',
     rating: 5,
-    image: '/Images/profile 1.png'
+    image: 'Images/profile 1.png'
   },
   {
     id: 'jurica',
     name: 'Jurica Kol',
     text: 'The systems Moe shares made it clear how to actually operate like a real agency.',
     rating: 5,
-    image: '/Images/profile 2.png'
+    image: 'Images/profile 2.png'
   },
   {
     id: 'jimmy',
     name: 'Jimmy Fermin',
     text: "This program helped me double the income I was making from creator management in my first few months.",
     rating: 5,
-    image: '/Images/profile 3.png'
+    image: 'Images/profile 3.png'
   },
   {
     id: 'aiony',
     name: 'Aiony Haust',
     text: 'The frameworks and templates alone were worth it. The real value was learning how Moe thinks.',
     rating: 5,
-    image: '/Images/profile 4.png'
+    image: 'Images/profile 4.png'
   },
   {
     id: 'albert',
     name: 'Albert Dera',
     text: 'If you want to become an operator instead of a fan, this is the room to be in.',
     rating: 5,
-    image: '/Images/profile 5.png'
+    image: 'Images/profile 5.png'
   }
 ];
 
@@ -56,7 +56,7 @@ function Testimonials() {
         <div className={styles.headerRow}>
           <div className={styles.headerLeft}>
             <img
-              src="/Icons/testimonials-icon.png"
+              src="Icons/testimonials-icon.png"
               alt="icon"
               className={styles.icon}
             />

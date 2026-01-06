@@ -22,9 +22,9 @@ function Footer() {
           <p className={styles.center}>Developed by Creators Blueprint</p>
 
           <div className={styles.icons}>
-            <img src="/Icons/instagram.png" alt="Instagram" />
-            <img src="/Icons/youtube.png" alt="YouTube" />
-            <img src="/Icons/mail.png" alt="Mail" />
+            <img src="Icons/instagram.png" alt="Instagram" />
+            <img src="Icons/youtube.png" alt="YouTube" />
+            <img src="Icons/mail.png" alt="Mail" />
           </div>
         </div>
 

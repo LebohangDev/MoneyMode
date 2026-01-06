@@ -28,7 +28,7 @@ function Contact() {
         {/* RIGHT SIDE LOGO */}
         <div className={styles.right}>
           <img
-            src="/Images/MoneyMode-logo.png"
+            src="Images/MoneyMode-logo.png"
             alt="MoneyMode Logo"
             className={styles.logo}
           />

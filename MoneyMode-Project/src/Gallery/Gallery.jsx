@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Gallery.module.css";
 
 const IMAGES = [
-  "/Images/gallery 1.png",
-  "/Images/gallery 2.png",
-  "/Images/gallery 3.png",
-  "/Images/gallery 4.png",
+  "Images/gallery 1.png",
+  "Images/gallery 2.png",
+  "Images/gallery 3.png",
+  "Images/gallery 4.png",
 ];
 
 const LOOP_IMAGES = [...IMAGES, ...IMAGES]; // Duplicate for seamless loop

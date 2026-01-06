@@ -79,7 +79,7 @@ function About() {
         {/* RIGHT SIDE — IMAGE */}
         <div className={styles.imageBlock}>
           <img
-            src="/Images/about-img.png"
+            src="Images/about-img.png"
             alt="Moe"
             className={styles.image}
           />

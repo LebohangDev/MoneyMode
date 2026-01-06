@@ -6,7 +6,7 @@ const PRODUCTS = [
   {
     id: "starter",
     name: "Starter Kit",
-    image: "/Images/free-ebook-cover.png",
+    image: "Images/free-ebook-cover.png",
     tag: "FREE",
     type: "free",
     cta: "Get Free",
@@ -16,7 +16,7 @@ const PRODUCTS = [
   {
     id: "guide",
     name: "Ultimate Guide",
-    image: "/Images/paid-ebook-cover.png",
+    image: "Images/paid-ebook-cover.png",
     tag: null,
     type: "paid",
     cta: "Buy Now",
@@ -26,7 +26,7 @@ const PRODUCTS = [
   {
     id: "sessions",
     name: "1-on-1 Sessions",
-    image: "/Images/sessions-cover.png",
+    image: "Images/sessions-cover.png",
     tag: null,
     type: "apply",
     cta: "Apply Now",

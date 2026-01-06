@@ -28,7 +28,7 @@ function SelectedProduct({ product }) {
           {/* LEFT SIDE */}
           <div className={styles.left}>
             <img
-              src="/Icons/trophy-icon.png"
+              src="Icons/trophy-icon.png"
               alt="info"
               className={styles.icon}
             />
