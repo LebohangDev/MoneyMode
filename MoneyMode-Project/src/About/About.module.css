@@ -15,92 +15,179 @@
 }
 
 /* BLOCK 1 — MEET MOE */
+/* BLOCK 1 — MEET MOE */
 .aboutBlock {
     display: flex;
     width: 100%;
-    padding: 20px 12px;
+    padding: 2.5rem;
     flex-direction: column;
     align-items: flex-start;
-    gap: 27px;
-    border-radius: 12px;
-    background: #393939;
+    gap: 1.5rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .heading {
-    font-size: 32px;
+    font-size: 2.5rem;
     font-weight: 700;
     margin: 0;
     color: #ffffff;
-}
-
-.money {
-    color: #ffffff;
-}
-
-.mode {
-    color: #7dd3fc;
-    /* baby blue */
+    letter-spacing: -0.02em;
 }
 
 .text {
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: 400;
-    color: #ffffff;
+    color: #cbd5e1;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.6;
+    max-width: 95%;
+}
+
+/* CTA FORM IN ABOUT */
+.ctaForm {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.ctaLabel {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #7dd3fc;
+}
+
+.inputRow {
+    display: flex;
+    gap: 0;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(125, 211, 252, 0.1);
+}
+
+.emailInput {
+    flex: 1;
+    height: 3.5rem;
+    padding: 0 1.2rem;
+    border-radius: 8px 0 0 8px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emailInput:focus {
+    border-color: #7dd3fc;
+    background: #222;
+}
+
+
+.submitButton:disabled {
+
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.submitButton {
+    height: 3.5rem;
+    padding: 0 1.5rem;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitButton:hover {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
 }
 
 /* BLOCK 2 — STATS */
 .statsBlock {
     display: flex;
     width: 100%;
-    padding: 30px 61px;
+    padding: 2rem 3rem;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    gap: 2rem;
+    border-radius: 16px;
+    background: #1a1a1a;
+    border-top: 1px solid #333;
+    position: relative;
+    overflow: hidden;
+}
 
-    gap: 100px;
-    border-radius: 12px;
-    background: #D9D9D9;
+/* Add a subtle top highlight to stats bar */
+.statsBlock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #7dd3fc, transparent);
+    opacity: 0.5;
 }
 
 .statItem {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .statNumber {
-    font-size: 48px;
-    font-weight: 700;
-    color: #282828;
-    margin: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 0.3rem 0;
+    text-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
 }
 
 .statLabel {
-    font-size: 20px;
-    font-weight: 500;
-    color: #282828;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #cbd5e1;
     margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 
 .imageBlock {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 16px;
+    overflow: visible;
 
-    border-radius: 12px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
+
+
 }
 
 .image {
-
-    width: 576px;
-    height: 531px;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
     object-fit: cover;
+
+    transition: all 0.5s ease;
 }
 
 /* RESPONSIVE */
@@ -144,6 +231,11 @@
         height: auto;
         object-fit: cover;
     }
+
+    .submitButton {
+        font-size: 0.7rem;
+
+    }
 }
 
 
@@ -169,8 +261,14 @@
         white-space: nowrap;
     }
 
+    .statNumber {
+        font-size: 1.5rem;
+    }
 
 
+    .statLabel {
+        font-size: 0.7rem;
+    }
 
 }
 

@@ -20,24 +20,12 @@ function Home() {
     checkEmailValidation(newEmail);
   };
 
+
   return (
     <section id="home" className={styles.homeSection}>
       <div className={`section__inner ${styles.inner} `}>
 
-        {/* LEFT IMAGE */}
-        <motion.div
-          className={styles.imageWrapper}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={slideFromLeft(0.1)}
-        >
-          <img
-            src="Images/hero-img.png"
-            alt="Moe Hero"
-            className={styles.heroImage}
-          />
-        </motion.div>
+
 
         {/* RIGHT CONTENT */}
         <motion.div
@@ -47,42 +35,48 @@ function Home() {
           viewport={{ once: true }}
           variants={fadeIn(0.2)}
         >
-          <h1 className={styles.heading}>
-            Turn Knowledge Into Income.
-          </h1>
-          <h2 className={styles.heading}>Build a profitable <span>creator agency.</span></h2>
-
-          {/* LINE UNDER HEADING */}
-          <div className={styles.headingLine} />
-
-          <p className={styles.subheading}>
-            Learn how to sign, manage, and scale high-earning creators
-            Guided by Moe, an experienced creator manager and founder of MoneyMode. Get started below:
+          <p className={styles.proofLine}>
+            Used to sign creators producing $5k–$50k+ months.
           </p>
 
-          {/* EMAIL INPUT */}
+          <h1 className={styles.heading}>
+            Sign your first creator in 7 days.
+          </h1>
+
+          <p className={styles.subheading}>
+            Free 7-step starter kit + scripts to land your first client.
+          </p>
+
+          <p className={styles.clarityLine}>
+            Enter your email and I’ll send the PDF instantly.
+          </p>
+
+
           <div className={styles.emailRow}>
             <input
               type="email"
               placeholder="Enter your email address"
-              className="email-input"
+              className={styles.emailInput}
               value={email}
               onChange={handleEmailChange}
             />
             <button
-              className="btn-primary"
+              type="submit"
+              className={styles.ctaButton}
               disabled={!isValidEmail}
             >
-              <span>GET FULL COURSE</span>
+              Get the Free Starter Kit
             </button>
           </div>
+          <p className={styles.trustLine}>
+            No spam. Sent instantly.
+          </p>
 
-          {/* CTA BUTTONS */}
-          <div className={styles.buttons}>
-            <button className="btn-secondary">
-              Apply for Operator Program
-            </button>
-          </div>
+
+          {/* SECONDARY CTA - TEXT LINK */}
+          <a href="#operator" className={styles.secondaryLink}>
+            Or apply for the Operator Program →
+          </a>
 
           {/* BOTTOM CENTER TEXT */}
           <div className={styles.bottomCenter}>

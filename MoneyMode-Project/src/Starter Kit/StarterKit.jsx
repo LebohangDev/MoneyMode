@@ -36,26 +36,46 @@ function StarterKit() {
           </p>
 
 
-          <input
-            type="email"
-            placeholder="Enter your email address"
-            className="email-input"
-            value={email}
-            onChange={handleEmailChange}
-          />
+          <div className={styles.microBullets}>
+            <div className={styles.bulletItem}>
+              <span className={styles.bulletPoint}>•</span>
+              <p>Who to DM (so you don’t waste time)</p>
+            </div>
+            <div className={styles.bulletItem}>
+              <span className={styles.bulletPoint}>•</span>
+              <p>What to say to get replies</p>
+            </div>
+            <div className={styles.bulletItem}>
+              <span className={styles.bulletPoint}>•</span>
+              <p>What to do when they say “yes”</p>
+            </div>
+          </div>
 
-          {/* BUTTON */}
-          <button
-            className="btn-primary"
-            disabled={!isValidEmail}
-          >
-            Get Free Starter Kit
-          </button>
 
-          {/* NOTE */}
-          <p className={styles.note}>
-            No spam. PDF sent instantly.
-          </p>
+          <form className={styles.optInForm} onSubmit={(e) => { e.preventDefault(); if (isValidEmail) console.log(email); }}>
+            <input
+              type="email"
+              placeholder="Enter your email address"
+              className={styles.emailInput}
+              value={email}
+              onChange={handleEmailChange}
+              autoFocus={window.innerWidth < 768} // simple check for mobile intent, or just let native behavior handle it
+            />
+
+            {/* BUTTON */}
+            <button
+              type="submit"
+              className={styles.ctaButton}
+              disabled={!isValidEmail}
+            >
+              Send Me The Starter Kit
+            </button>
+          </form>
+
+          {/* SECONDARY CTA */}
+          <a href="#operator" className={styles.secondaryLink}>
+            Already running an agency? Apply for Operator Program →
+          </a>
         </div>
 
         {/* RIGHT SIDE IMAGE */}

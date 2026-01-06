@@ -1,28 +1,28 @@
-import React, { useRef, useEffect } from "react";
-import { useInView, useSpring, useTransform, motion } from "framer-motion";
+import React, { useState } from "react";
 import styles from "./About.module.css";
 
 function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
 
-  const springConfig = { duration: 2000, bounce: 0 };
+  const checkEmailValidation = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    setIsValidEmail(regex.test(email));
+  };
 
-  const count1 = useSpring(0, springConfig);
-  const count2 = useSpring(0, springConfig);
-  const count3 = useSpring(0, springConfig);
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    checkEmailValidation(newEmail);
+  };
 
-  const display1 = useTransform(count1, (value) => Math.round(value));
-  const display2 = useTransform(count2, (value) => Math.round(value));
-  const display3 = useTransform(count3, (value) => Math.round(value));
-
-  useEffect(() => {
-    if (isInView) {
-      count1.set(10);
-      count2.set(50);
-      count3.set(100);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isValidEmail) {
+      console.log("Email submitted:", email);
+      // Logic to send email/PDF would go here
     }
-  }, [isInView, count1, count2, count3]);
+  };
 
   return (
     <section id="about" className="section">
@@ -30,48 +30,56 @@ function About() {
 
         {/* LEFT SIDE (2 BLOCKS) */}
         <div className={styles.leftColumn}>
-
-          {/* BLOCK 1 — MEET MOE */}
+          {/* BLOCK 1 — MEET MOE + CTA */}
           <div className={styles.aboutBlock}>
             <h2 className={styles.heading}>
-              Meet Moe, Founder of{" "}
-              <span className={styles.money}>Money</span>
-              <span className={styles.mode}>Mode</span>
+              Meet Moe, Founder of MoneyMode
             </h2>
-
             <p className={styles.text}>
-              An experienced and highly successful creator manager who has spent
-              years managing creators and scaling creator accounts behind the scenes.
+              I run a creator management company focused on performance and repeatable systems.
+            </p>
+            <p className={styles.text}>
+              In 2025 alone, our creators generated over $1.09M through a structured backend: sales, operations, and content execution handled by a 20+ person team.
+            </p>
+            <p className={styles.text}>
+              We work with top-performing creators, including accounts doing $30K–$70K+ per month.
             </p>
 
-            <p className={styles.text}>
-              Moe has developed systems that help creators grow, monetize, and
-              operate profitably and more importantly, he understands what it
-              really takes to run a successful creator agency.
-            </p>
+            {/* CTA FORM */}
+            <form className={styles.ctaForm} onSubmit={handleSubmit}>
+              <label className={styles.ctaLabel}>Get the Free Starter Kit →</label>
+              <div className={styles.inputRow}>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className={styles.emailInput}
+                  value={email}
+                  onChange={handleEmailChange}
+                />
+                <button
+                  type="submit"
+                  className={styles.submitButton}
+                  disabled={!isValidEmail}
+                >
+                  Get Instant Access
+                </button>
+              </div>
+            </form>
           </div>
 
           {/* BLOCK 2 — STATS */}
-          <div ref={ref} className={styles.statsBlock}>
+          <div className={styles.statsBlock}>
             <div className={styles.statItem}>
-              <p className={styles.statNumber}>
-                <motion.span>{display1}</motion.span>
-              </p>
-              <p className={styles.statLabel}>Years Experience</p>
+              <p className={styles.statNumber}>Over $1M</p>
+              <p className={styles.statLabel}>Generated (2025)</p>
             </div>
-
             <div className={styles.statItem}>
-              <p className={styles.statNumber}>
-                <motion.span>{display2}</motion.span>+
-              </p>
-              <p className={styles.statLabel}>Creators Managed</p>
+              <p className={styles.statNumber}>20+</p>
+              <p className={styles.statLabel}>Person Team</p>
             </div>
-
             <div className={styles.statItem}>
-              <p className={styles.statNumber}>
-                <motion.span>{display3}</motion.span>+
-              </p>
-              <p className={styles.statLabel}>Clients</p>
+              <p className={styles.statNumber}>$30K–$70K</p>
+              <p className={styles.statLabel}>/month Accounts</p>
             </div>
           </div>
         </div>
@@ -79,7 +87,7 @@ function About() {
         {/* RIGHT SIDE — IMAGE */}
         <div className={styles.imageBlock}>
           <img
-            src="Images/about-img.png"
+            src="Images/hero-img.png"
             alt="Moe"
             className={styles.image}
           />

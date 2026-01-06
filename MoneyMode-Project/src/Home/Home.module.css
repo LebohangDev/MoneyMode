@@ -1,336 +1,374 @@
 /* src/Home/Home.module.css */
 
+/* HERO SECTION - "LOUD POP" VIBE */
+/* HERO SECTION - "LOUD POP" VIBE */
 .homeSection {
     width: 100%;
-    padding: 6rem 1.5rem;
-    background: conic-gradient(from 180deg at 50% 50%,
-            #282828 0deg,
-            #282828 154.0384590625763deg,
-            #393939 360deg);
+    padding: 8rem 2rem 4rem;
+    /* Background Image with Gradient Overlay (Darker on Right) */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 50%, #000000 100%),
+        url('/Images/gallery_1.png');
+    background-size: cover;
+    background-position: center left;
+    background-repeat: no-repeat;
     display: flex;
+    align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
 
 .inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    justify-items: center;
-    gap: 4rem;
-    width: 100%;
-}
-
-/* LEFT IMAGE */
-.imageWrapper {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    align-items: center;
     width: 100%;
-}
-
-.heroImage {
-    width: 40rem;
-    height: auto;
-    filter: grayscale(100%);
-    object-fit: contain;
+    max-width: 1200px;
+    z-index: 2;
 }
 
 /* RIGHT CONTENT */
 .content {
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
-
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
 }
 
+/* PROOF LINE - TINY CREDIBILITY */
+.proofLine {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #38bdf8;
+    /* Electric Blue */
+    margin: 0 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.proofLine::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #38bdf8;
+}
+
+/* HEADLINE - TIGHT PROMISE */
 .heading {
-    font-size: 3rem;
-    font-weight: 200;
+    font-size: 3.5rem;
+    font-weight: 800;
     color: #ffffff;
     line-height: 1.1;
-    margin: 0;
+    margin: 0 0 1.5rem 0;
+    letter-spacing: -0.03em;
+    text-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
 }
 
-.heading span {
-    font-weight: 700;
-    background: linear-gradient(to right, #FFFFFF 0%, #999999 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* LINE UNDER HEADING */
-.headingLine {
-    width: 80px;
-    height: 4px;
-    background-color: #7dd3fc;
-    /* baby blue */
-    margin: 1rem 0 1.4rem;
-    border-radius: 4px;
-}
-
+/* SUBHEADING - SUPPORTING */
 .subheading {
-    font-size: 1rem;
-    color: #e5e5e5;
-    margin-bottom: 1.8rem;
-    line-height: 1.6;
-    margin-top: 0;
-}
-
-/* EMAIL INPUT */
-.emailRow {
-    margin-bottom: 1.2rem;
-    display: flex;
-    flex-direction: row;
-    gap: 0;
-}
-
-.emailRow button {
-    border-radius: 0;
-    border: none;
-    font-size: 0.7rem;
-    font-weight: 600;
-    cursor: pointer;
-    background: #464646;
-    color: #ffffff;
-    height: 3.5rem;
-    transition: all 0.2s ease;
-    padding: 0 1.5rem;
-}
-
-.emailRow button:disabled {
-    cursor: not-allowed;
-    background: #2a2a2a;
-    color: #555555;
-}
-
-.emailRow button:hover:not(:disabled) {
-    background: #7dd3fc;
-    color: #000;
-}
-
-.emailRow input {
-    border-radius: 0;
-    border: none;
-    width: 71%;
-    font-size: 0.9rem;
+    font-size: 1.25rem;
     font-weight: 400;
-    cursor: pointer;
-    background-color: #ffffff;
-    color: #000;
-    height: 3.5rem;
-    padding: 0 1rem;
+    color: #e5e5e5;
+    margin: 0 0 2rem 0;
+    line-height: 1.5;
+    max-width: 90%;
 }
 
-
-
-
-
-/* CTA BUTTONS */
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 3rem;
-
-}
-
-.btn {
-    padding: 0.9rem 1.4rem;
-    border-radius: 8px;
+/* CLARITY LINE - REMOVE DOUBT */
+.clarityLine {
     font-size: 0.95rem;
-    font-weight: 600;
-    cursor: pointer;
+    color: #94a3b8;
+    margin: 0 0 0.8rem 0;
+    font-weight: 500;
+}
+
+
+
+.emailRow {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2rem;
+    gap: 0;
+    box-shadow: 0 0 30px rgba(125, 211, 252, 0.15);
+}
+
+.emailInput {
+    flex: 1;
+    height: 4rem;
+    padding: 0 1.5rem;
+    font-size: 1.1rem;
     border: none;
+    border-radius: 8px 0 0 8px;
+    background: #ffffff;
+    color: #000000;
+    outline: none;
+    font-weight: 500;
 }
 
-.primary {
-    background-color: #ffffff;
-    color: #000;
+.emailInput::placeholder {
+    color: #64748b;
 }
 
-.secondary {
-    background-color: #7dd3fc;
-    color: #000;
+/* CTA BUTTON - NEON / VIBRANT */
+.ctaButton {
+    height: 4rem;
+    padding: 0 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    /* Blue to Purple */
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+    overflow: hidden;
+}
+
+.ctaButton:hover:not(:disabled) {
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+    z-index: 1;
+}
+
+.ctaButton:disabled {
+
+    opacity: 0.6;
+    cursor: not-allowed;
+
+}
+
+/* TRUST LINE */
+.trustLine {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-top: 0.8rem;
+    margin-left: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.trustLine::before {
+    content: '🔒';
+    font-size: 0.8rem;
+}
+
+/* SECONDARY LINK - TEXT ONLY */
+.secondaryLink {
+    font-size: 1rem;
+    color: #7dd3fc;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.secondaryLink:hover {
+    color: #ffffff;
+    border-bottom-color: #ffffff;
+    transform: translateX(4px);
 }
 
 /* BOTTOM CENTER */
 .bottomCenter {
+    grid-column: 1 / -1;
     text-align: center;
-    margin-top: 1rem;
+    margin-top: 2rem;
+    opacity: 0.6;
 }
 
 .journeyText {
-    font-size: 0.95rem;
-    color: #ffffff;
-    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    margin-bottom: 0.5rem;
 }
 
 .downIcon {
-    font-size: 1.6rem;
-    color: #ffffff;
+    font-size: 1.5rem;
+    color: #7dd3fc;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+
+/* MOBILE */
+@media (max-width: 767px) {
+    .homeSection {
+        padding: 6rem 1.5rem 4rem;
+
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.7) 50%, #000000 100%),
+            url('/Images/gallery_1.png');
+        background-size: cover;
+        background-position: center left;
+        background-repeat: no-repeat;
+    }
+
     .inner {
         display: flex;
         flex-direction: column-reverse;
-        align-items: center;
+        gap: 2rem;
         text-align: center;
-        gap: 3rem;
-    }
-
-    .imageWrapper {
         width: 100%;
-        /* Image is first in DOM, so it stays on top */
-    }
-
-    .heroImage {
-        width: 100%;
-        max-width: 500px;
-        /* Constrain image size on mobile */
     }
 
     .content {
-        padding-top: 0;
         align-items: center;
+        text-align: center;
+        width: 100%;
+        padding: 0;
     }
 
     .heading {
-        font-size: 2.5rem;
-        /* Scale down heading */
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
     }
 
     .subheading {
-        max-width: 500px;
-        /* Readability */
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
     }
 
-    .buttons {
-        align-items: center;
+    .proofLine {
+        justify-content: center;
     }
 
     .emailRow {
         flex-direction: column;
-        /* Stack input and button on small mobile */
-        width: 100%;
-        max-width: 400px;
+        height: auto;
         gap: 10px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        box-shadow: none;
     }
 
-    .emailRow input,
-    .emailRow button {
+    .emailInput {
+        width: 100%;
+        padding-top: 1rem;
+
+        padding-bottom: 1rem;
+        border-radius: 8px;
+        text-align: left;
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .ctaButton {
         width: 100%;
         height: 3.5rem;
         border-radius: 8px;
-        /* Rounded corners for stacked look */
     }
 
-    .emailRow input {
-        padding: 0 1rem;
+    .trustLine {
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .imageWrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .heroImage {
+        width: 100%;
+        max-width: 400px;
     }
 }
 
-@media (max-width: 480px) {
-    .heading {
-        font-size: 2rem;
-    }
-}
-
-
-
-
+/* TABLET LANDSCAPE */
 @media (min-width: 768px) and (max-width: 1279px) and (orientation: landscape) {
-    .heroImage {
-        width: 100%;
-        max-width: 500px;
-    }
-
-}
-
-
-
-@media (min-width: 768px) and (max-width: 1279px) and (orientation: portrait) {
     .homeSection {
-        padding-bottom: 0;
+        padding: 4rem 2rem;
     }
 
     .inner {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        align-items: center;
+    }
 
+    .content {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .heading {
+        font-size: 2.8rem;
+    }
+
+    .emailRow {
+        width: 100%;
+    }
+}
+
+/* TABLET PORTRAIT */
+@media (min-width: 768px) and (max-width: 1280px) and (orientation: portrait) {
+    .homeSection {
+        padding: 6rem 2rem;
+    }
+
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+        justify-items: center;
+    }
+
+    .content {
         align-items: center;
         text-align: center;
-        gap: 3rem;
+        order: 1;
     }
 
     .imageWrapper {
         width: 100%;
-        /* Image is first in DOM, so it stays on top */
+        order: 2;
     }
 
     .heroImage {
-        width: 100%;
-        max-width: 500px;
-        /* Constrain image size on mobile */
+        max-width: 60%;
     }
 
-    .content {
-        padding-top: 0;
-        align-items: center;
-    }
-
-    .heading {
-        font-size: 2.5rem;
-        /* Scale down heading */
-    }
-
-    .subheading {
-        max-width: 500px;
-        /* Readability */
-    }
-
-    .buttons {
-        align-items: center;
+    .proofLine {
+        justify-content: center;
     }
 
     .emailRow {
-        flex-direction: column;
-        /* Stack input and button on small mobile */
-        width: 100%;
-        max-width: 400px;
-        gap: 10px;
+        max-width: 500px;
+        margin: 0 auto 2rem;
     }
 
-    .emailRow input,
-    .emailRow button {
-        width: 100%;
-        height: 3.5rem;
-        border-radius: 8px;
-        /* Rounded corners for stacked look */
+    .ctaButton {
+        font-size: 0.7rem;
+
     }
 
-
-
-    .emailRow input {
-        padding: 0 1rem;
-    }
-}
-
-
-
-/* iPad Pro PORTRAIT only */
-@media only screen and (device-width: 1024px) and (device-height: 1366px) and (orientation: portrait) {
-
-    .inner {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-
-        align-items: center;
-        text-align: center;
-        gap: 3rem;
-    }
-
-    .heroImage {
-        display: block;
+    .trustLine {
+        justify-content: center;
     }
 }

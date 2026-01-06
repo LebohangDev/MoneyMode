@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import styles from "./Gallery.module.css";
 
 const IMAGES = [
-  "Images/gallery 1.png",
-  "Images/gallery 2.png",
-  "Images/gallery 3.png",
-  "Images/gallery 4.png",
+  "Images/gallery_1.png",
+  "Images/gallery_2.png",
+  "Images/gallery_3.png",
+  "Images/gallery_4.png",
 ];
 
 const LOOP_IMAGES = [...IMAGES, ...IMAGES]; // Duplicate for seamless loop
@@ -15,39 +15,39 @@ function Gallery() {
 
   // Auto-scroll effect
   useEffect(() => {
-  const container = scrollRef.current;
-  if (!container) return;
+    const container = scrollRef.current;
+    if (!container) return;
 
-  const scrollStep = 0.5;
-  let animationId;
+    const scrollStep = 0.5;
+    let animationId;
 
-  const autoScroll = () => {
-    // Reset when we've scrolled halfway (first image set)
-    if (container.scrollLeft >= container.scrollWidth / 2) {
-      container.scrollLeft = 0;
-    } else {
-      container.scrollLeft += scrollStep;
-    }
+    const autoScroll = () => {
+      // Reset when we've scrolled halfway (first image set)
+      if (container.scrollLeft >= container.scrollWidth / 2) {
+        container.scrollLeft = 0;
+      } else {
+        container.scrollLeft += scrollStep;
+      }
+
+      animationId = requestAnimationFrame(autoScroll);
+    };
 
     animationId = requestAnimationFrame(autoScroll);
-  };
 
-  animationId = requestAnimationFrame(autoScroll);
+    const stopScroll = () => cancelAnimationFrame(animationId);
+    const resumeScroll = () => {
+      animationId = requestAnimationFrame(autoScroll);
+    };
 
-  const stopScroll = () => cancelAnimationFrame(animationId);
-  const resumeScroll = () => {
-    animationId = requestAnimationFrame(autoScroll);
-  };
+    container.addEventListener("mouseenter", stopScroll);
+    container.addEventListener("mouseleave", resumeScroll);
 
-  container.addEventListener("mouseenter", stopScroll);
-  container.addEventListener("mouseleave", resumeScroll);
-
-  return () => {
-    cancelAnimationFrame(animationId);
-    container.removeEventListener("mouseenter", stopScroll);
-    container.removeEventListener("mouseleave", resumeScroll);
-  };
-}, []);
+    return () => {
+      cancelAnimationFrame(animationId);
+      container.removeEventListener("mouseenter", stopScroll);
+      container.removeEventListener("mouseleave", resumeScroll);
+    };
+  }, []);
 
 
   return (

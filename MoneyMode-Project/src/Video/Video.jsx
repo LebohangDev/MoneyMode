@@ -1,16 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Video.module.css";
 
 function Video() {
+  const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
+
+  const checkEmailValidation = (email) => {
+    const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    setIsValidEmail(regex.test(email));
+  };
+
+  const handleEmailChange = (e) => {
+    const newEmail = e.target.value;
+    setEmail(newEmail);
+    checkEmailValidation(newEmail);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (isValidEmail) {
+      console.log("Email submitted:", email);
+      // Logic to send email/PDF would go here
+    }
+  };
+
   return (
     <section id="video" className="section">
       <div className={`section__inner ${styles.wrapper}`}>
 
-        {/* QUOTE */}
-        <div className={styles.quoteBlock}>
-          <p className={styles.quote}>
-            “MoneyMode isn’t theory it’s built from real management experience,
-            real wins, and real lessons learned.”
+        {/* HEADLINE + SUBHEAD */}
+        <div className={styles.headerBlock}>
+          <h2 className={styles.headline}>
+            How I Built a $1M Creator Management System
+          </h2>
+          <p className={styles.subhead}>
+            Watch the breakdown — then grab the free Starter Kit below.
           </p>
         </div>
 
@@ -25,49 +49,54 @@ function Video() {
           />
         </div>
 
-        {/* WHAT MONEYMODE OFFERS */}
-        <div className={styles.offersBlock}>
-          <h2 className={styles.title}>What MoneyMode offers?</h2>
-          <p className={styles.subtitle}>
-            Build real careers in creator management using proven systems and
-            real‑world strategies.
+        {/* CTA BLOCK */}
+        <div className={styles.ctaBlock}>
+          <p className={styles.ctaText}>
+            Want the exact steps? Enter your email and I’ll send the 7-step Starter Kit instantly.
           </p>
 
-          <div className={styles.featuresGrid}>
-
-            {/* FEATURE 1 */}
-            <div className={styles.featureItem}>
-              <img
-                src="Icons/knowledge-icon.png"
-                alt="Insider Knowledge"
-                className={styles.icon}
+          <form className={styles.ctaForm} onSubmit={handleSubmit}>
+            <div className={styles.inputRow}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className={styles.emailInput}
+                value={email}
+                onChange={handleEmailChange}
               />
-              <p className={styles.featureText}>Insider Knowledge</p>
+              <button
+                type="submit"
+                className={styles.submitButton}
+                disabled={!isValidEmail}
+              >
+                Get Free Starter Kit
+              </button>
             </div>
+            <p className={styles.trustLine}>
+              No spam. Instant access.
+            </p>
+          </form>
 
-            {/* FEATURE 2 */}
-            <div className={styles.featureItem}>
-              <img
-                src="Icons/framework-icon.png"
-                alt="Proven Frameworks"
-                className={styles.icon}
-              />
-              <p className={styles.featureText}>Proven Frameworks</p>
-            </div>
-
-            {/* FEATURE 3 */}
-            <div className={styles.featureItem}>
-              <img
-                src="Icons/strategy-icon.png"
-                alt="Execution Strategies"
-                className={styles.icon}
-              />
-              <p className={styles.featureText}>Execution Strategies</p>
-            </div>
-
-          </div>
+          <a href="#operator" className={styles.secondaryLink}>
+            Apply for the Operator Program →
+          </a>
         </div>
 
+        {/* SUPPORTING BULLETS */}
+        <div className={styles.bulletsBlock}>
+          <div className={styles.bulletItem}>
+            <span className={styles.bulletPoint}>•</span>
+            <p className={styles.bulletText}>How I signed my first creators</p>
+          </div>
+          <div className={styles.bulletItem}>
+            <span className={styles.bulletPoint}>•</span>
+            <p className={styles.bulletText}>The backend systems we run daily</p>
+          </div>
+          <div className={styles.bulletItem}>
+            <span className={styles.bulletPoint}>•</span>
+            <p className={styles.bulletText}>How we scale $30K–$50K/month accounts</p>
+          </div>
+        </div>
       </div>
     </section>
   );

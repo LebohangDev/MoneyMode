@@ -25,9 +25,9 @@ body {
   margin: 0;
   font-family: 'Inter', sans-serif;
   background: conic-gradient(from 180deg at 50% 50%,
-      #282828 0deg,
-      #282828 154.0384590625763deg,
-      #393939 360deg);
+      #1a1a1a 0deg,
+      #2d2d2d 154.0384590625763deg,
+      #1e1e1e 360deg);
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
 }
