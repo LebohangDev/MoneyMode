@@ -39,20 +39,14 @@ function SelectedProduct({ product }) {
             <input
               type="email"
               placeholder="Enter your email address"
-              className="email-input"
+              className={styles.emailInput}
               value={email}
               onChange={handleEmailChange}
             />
 
             {/* CTA BUTTON */}
             <button
-              className={
-                product.type === "free"
-                  ? "btn-primary"
-                  : product.type === "paid"
-                    ? "btn-primary"
-                    : "btn-primary"
-              }
+              className={styles.ctaButton}
               disabled={!isValidEmail}
             >
               {product.cta}

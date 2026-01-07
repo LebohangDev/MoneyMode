@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import styles from "./Contact.module.css";
 
 function Contact() {
@@ -6,33 +7,78 @@ function Contact() {
     <section id="contact" className="section">
       <div className={`section__inner ${styles.wrapper}`}>
 
-        {/* LEFT SIDE */}
-        <div className={styles.left}>
-          <h2 className={styles.heading}>
-            Ready to Take the Next Step?
-          </h2>
+        {/* HEADING */}
+        <motion.h2
+          className={styles.heading}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          Ready to Take the Next Step?
+        </motion.h2>
 
-          <p className={styles.text}>
-            Whether you're just getting started or ready to scale your creator agency, Money
-            <span className={styles.mode}>Mode</span>
-            {" "}is here to help.
-          </p>
-          <button type="button" className="btn--contact">
-              Contact MoneyMode
-              <span className="btn__icon">
-                <i className="ri-arrow-right-up-line" />
-              </span>
-          </button>
+        {/* SUBTEXT */}
+        <motion.p
+          className={styles.subtext}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
+          MoneyMode is here to help.
+        </motion.p>
+
+        {/* TWO BLOCKS */}
+        <div className={styles.blocks}>
+          {/* LEFT BLOCK */}
+          <motion.div
+            className={styles.block}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+          >
+            <h3 className={styles.blockHeading}>Get the FREE Starter Kit</h3>
+            <p className={styles.blockSubtext}>
+              Learn how to sign creators step-by-step
+            </p>
+
+            <a href="#product" className={styles.blockButtonPrimary}>
+              Get the Free Starter Kit &gt;
+            </a>
+          </motion.div>
+
+          {/* RIGHT BLOCK */}
+          <motion.div
+            className={styles.block}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.15 }}
+          >
+            <h3 className={styles.blockHeading}>Apply to Work With Me</h3>
+            <p className={styles.blockSubtext}>
+              Serious about moving fast? Let's see if we're a fit.
+            </p>
+
+            <a href="#product" className={styles.blockButtonWhite}>
+              Apply Now
+            </a>
+          </motion.div>
         </div>
 
-        {/* RIGHT SIDE LOGO */}
-        <div className={styles.right}>
-          <img
-            src="Images/MoneyMode-logo.png"
-            alt="MoneyMode Logo"
-            className={styles.logo}
-          />
-        </div>
+        {/* FINAL CONTACT BUTTON */}
+        <motion.a
+          href="#contact"
+          className={styles.contactButton}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
+          Contact MoneyMode
+        </motion.a>
 
       </div>
     </section>

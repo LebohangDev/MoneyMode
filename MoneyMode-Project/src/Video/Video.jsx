@@ -77,7 +77,7 @@ function Video() {
             </p>
           </form>
 
-          <a href="#operator" className={styles.secondaryLink}>
+          <a href="#product" className={styles.secondaryLink}>
             Apply for the Operator Program →
           </a>
         </div>

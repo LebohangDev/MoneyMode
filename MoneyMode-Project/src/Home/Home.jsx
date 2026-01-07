@@ -74,7 +74,7 @@ function Home() {
 
 
           {/* SECONDARY CTA - TEXT LINK */}
-          <a href="#operator" className={styles.secondaryLink}>
+          <a href="#product" className={styles.secondaryLink}>
             Or apply for the Operator Program →
           </a>
 

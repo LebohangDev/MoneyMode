@@ -1,75 +1,140 @@
 .wrapper {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 60px;
-}
-
-/* LEFT SIDE */
-.left {
-    max-width: 520px;
-    display: flex;
     flex-direction: column;
-    gap: 22px;
+    align-items: center;
+    gap: 40px;
 }
 
+/* HEADING */
 .heading {
     font-size: 40px;
     font-weight: 700;
     color: #ffffff;
-    margin: 0;
-    text-align: left;
-}
-
-.text {
-    font-size: 22px;
-    font-weight: 400;
-    color: #e5e5e5;
-    line-height: 1.5;
+    text-align: center;
     margin: 0;
 }
 
-/* MoneyMode styling */
-.money {
-    color: #282828;
-    font-weight: inherit;
+/* SUBTEXT */
+.subtext {
+    font-size: 20px;
+    color: #d9d9d9;
+    text-align: center;
+    margin-top: -10px;
 }
 
-.mode {
-    /* baby blue */
-    color: #0088FF;
-    font-weight: inherit;
-}
-
-/* CONTACT BUTTON STYLING */
-
-
-/* RIGHT SIDE LOGO */
-.right {
+/* BLOCKS CONTAINER */
+.blocks {
     display: flex;
+    gap: 60px;
+    /* increased spacing */
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 10px;
 }
 
-.logo {
-    width: 420px;
-    height: auto;
-    object-fit: contain;
+/* INDIVIDUAL BLOCK */
+.block {
+    width: 500px;
+    /* wider blocks */
+    padding: 32px;
+    border-radius: 16px;
+    background: #1a1a1a;
+    /* matte black */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
+    transition: all 0.3s ease;
+    text-align: left;
+    /* left aligned text */
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.block:hover {
+    box-shadow: 0 0 35px rgba(125, 211, 252, 0.4);
+    transform: translateY(-4px);
+}
+
+/* BLOCK TEXT */
+.blockHeading {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.blockSubtext {
+    font-size: 16px;
+    color: #d9d9d9;
+    margin-bottom: 20px;
+}
+
+/* BUTTON — FREE STARTER KIT (#75ABD4) */
+.blockButtonPrimary {
+    align-self: flex-end;
+    /* right aligned */
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 8px;
+    background: #75abd4;
+    /* updated color */
+    color: #282828;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.blockButtonPrimary:hover {
+    opacity: 0.9;
+}
+
+/* BUTTON — WHITE */
+.blockButtonWhite {
+    align-self: flex-end;
+    /* right aligned */
+    display: inline-block;
+    padding: 14px 22px;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #282828;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.blockButtonWhite:hover {
+    opacity: 0.85;
+}
+
+/* FINAL CONTACT BUTTON */
+.contactButton {
+    margin-top: 20px;
+    padding: 16px 40px;
+    border-radius: 8px;
+    background: #7dd3fc;
+    color: #282828;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(125, 211, 252, 0.3);
+}
+
+.contactButton:hover {
+    background: #a5e8ff;
 }
 
 /* RESPONSIVE */
-@media (max-width: 1000px) {
-    .wrapper {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .left {
-        align-items: center;
-    }
-
-    .heading {
-        text-align: center;
+@media (max-width: 900px) {
+    .block {
+        width: 100%;
+        max-width: 500px;
     }
 }
 
@@ -78,11 +143,21 @@
         font-size: 32px;
     }
 
-    .text {
+    .subtext {
         font-size: 18px;
     }
 
-    .logo {
-        width: 300px;
+    .blocks {
+        gap: 30px;
+    }
+
+    .block {
+        padding: 28px;
+    }
+
+    .contactButton {
+        width: 100%;
+        max-width: 360px;
+        text-align: center;
     }
 }

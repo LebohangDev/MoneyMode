@@ -34,8 +34,8 @@
 .line {
     width: 632px;
     height: 8px;
-    background: rgba(255, 255, 255, 0.5);
-    opacity: 0.5;
+    background: #89CFF0;
+    opacity: 0.8;
     border-radius: 4px;
 }
 

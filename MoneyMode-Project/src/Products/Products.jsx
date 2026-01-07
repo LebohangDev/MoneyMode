@@ -12,6 +12,7 @@ const PRODUCTS = [
     cta: "Get Free",
     description:
       "A practical starter kit that gives you the exact 7 steps to sign your first creator.",
+    subtext: "7 steps to land your first creator",
   },
   {
     id: "guide",
@@ -22,16 +23,18 @@ const PRODUCTS = [
     cta: "Buy Now",
     description:
       "A complete blueprint for building and scaling a profitable creator agency.",
+    subtext: "The A-Z playbook to build and scale.",
   },
   {
     id: "sessions",
-    name: "1-on-1 Sessions",
+    name: "Operator Program",
     image: "Images/sessions-cover.png",
     tag: null,
     type: "apply",
     cta: "Apply Now",
     description:
       "Work directly with Moe through personalized sessions to accelerate your agency growth.",
+    subtext: "Application only. Limited spots.",
   },
 ];
 
@@ -43,35 +46,16 @@ function Products() {
       <section id="product" className="section">
         <div className={`section__inner ${styles.wrapper}`}>
 
-          {/* TOP LINE */}
-          <p className={styles.topLine}>
-            Everything you need to start, build, and scale your creator agency.
+          {/* NEW MAIN HEADING */}
+          <h2 className={styles.mainHeading}>
+            Start free. Then go deeper. Then apply.
+          </h2>
+
+          {/* NEW SUBTEXT */}
+          <p className={styles.subHeading}>
+            Pick the stage you're at – I'll show you the next move.
           </p>
 
-          {/* PRODUCT CARDS */}
-          {/* <div className={styles.grid}>
-            {PRODUCTS.map((product) => (
-              <div
-                key={product.id}
-                className={`${styles.card} ${selected.id === product.id ? styles.selected : ""
-                  }`}
-                onClick={() => { setSelected(product); window.location.href = "#selected-product"; }}
-              >
-                {product.tag && (
-                  <span className={styles.tag}>{product.tag}</span>
-                )}
-
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className={styles.image}
-                />
-
-                <p className={styles.name}>{product.name}</p>
-              </div>
-            ))}
-          </div> */}
-          
           {/* PRODUCT CARDS */}
           <div className={styles.productsContainer}>
             <div className={styles.bgBar}></div>
@@ -93,11 +77,13 @@ function Products() {
                   <img src={product.image} alt={product.name} className={styles.image} />
 
                   <p className={styles.name}>{product.name}</p>
+
+                  {/* NEW SUBTEXT UNDER PRODUCT */}
+                  <p className={styles.subtext}>{product.subtext}</p>
                 </div>
               ))}
             </div>
           </div>
-
 
         </div>
       </section>

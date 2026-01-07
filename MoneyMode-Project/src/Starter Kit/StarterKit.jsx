@@ -73,7 +73,7 @@ function StarterKit() {
           </form>
 
           {/* SECONDARY CTA */}
-          <a href="#operator" className={styles.secondaryLink}>
+          <a href="#product" className={styles.secondaryLink}>
             Already running an agency? Apply for Operator Program →
           </a>
         </div>
