@@ -25,7 +25,8 @@ function SelectedProduct({ product }) {
     const productPayLoad = {
       name: product.name,
       description: product.description,
-      amount: product.amount,
+      price: product.amount,
+      image: product.image,
       email: email,
       successUrl: "https://lebohangdev.github.io/Caroline/?payment=success",
       cancelUrl: "https://lebohangdev.github.io/Caroline/?payment=cancel",
