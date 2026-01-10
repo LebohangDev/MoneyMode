@@ -22,15 +22,16 @@ function SelectedProduct({ product }) {
   // asyncronous function to handle stripe checkout when called 
   async function handleCheckout(product) {
 
-    const productPayLoad = {
+    const productPayLoad =
+    {
       name: product.name,
       description: product.description,
-      price: product.amount,
-      image: product.image,
-      email: email,
-      successUrl: "https://lebohangdev.github.io/Caroline/?payment=success",
-      cancelUrl: "https://lebohangdev.github.io/Caroline/?payment=cancel",
-    };
+      // striclty ensuring it is sent as an integer
+      price: Number(product.price),
+      image: "https://lebohangdev.github.io/MoneyMode/Images/paid-ebook-cover.png",
+      successUrl: "https://lebohangdev.github.io/MoneyMode/?payment=success",
+      cancelUrl: "https://lebohangdev.github.io/MoneyMode/?payment=cancel",
+    }
 
     console.log("Product payload:", productPayLoad);
 
