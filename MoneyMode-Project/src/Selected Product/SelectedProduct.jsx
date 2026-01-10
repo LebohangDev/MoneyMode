@@ -28,9 +28,9 @@ function SelectedProduct({ product }) {
       description: product.description,
       // striclty ensuring it is sent as an integer
       price: Number(product.price),
-      image: "https://lebohangdev.github.io/MoneyMode/Images/paid-ebook-cover.png",
-      successUrl: "https://lebohangdev.github.io/MoneyMode/?payment=success",
-      cancelUrl: "https://lebohangdev.github.io/MoneyMode/?payment=cancel",
+      image: "https://vk-varun.github.io/MoneyMode/Images/paid-ebook-cover.png",
+      successUrl: "https://vk-varun.github.io/MoneyMode/?payment=success",
+      cancelUrl: "https://vk-varun.github.io/MoneyMode/?payment=cancel",
     }
 
     console.log("Product payload:", productPayLoad);
