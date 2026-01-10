@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Products.module.css";
 import SelectedProduct from "../Selected Product/SelectedProduct";
+import { motion } from "framer-motion";
 
 const PRODUCTS = [
   {
@@ -21,9 +22,11 @@ const PRODUCTS = [
     tag: null,
     type: "paid",
     cta: "Buy Now",
+    amount: 20,
     description:
       "A complete blueprint for building and scaling a profitable creator agency.",
     subtext: "The A-Z playbook to build and scale.",
+
   },
   {
     id: "sessions",
@@ -40,6 +43,22 @@ const PRODUCTS = [
 
 function Products() {
   const [selected, setSelected] = useState(PRODUCTS[0]);
+
+  // Animation Variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  };
 
   return (
     <>
@@ -60,13 +79,20 @@ function Products() {
           <div className={styles.productsContainer}>
             <div className={styles.bgBar}></div>
 
-            <div className={styles.grid}>
+            <motion.div
+              className={styles.grid}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+            >
               {PRODUCTS.map((product) => (
-                <div
+                <motion.div
                   key={product.id}
-                  className={`${styles.card} ${
-                    selected.id === product.id ? styles.selected : ""
-                  }`}
+                  className={`${styles.card} ${selected.id === product.id ? styles.selected : ""
+                    }`}
+                  variants={itemVariants}
+                  whileHover={{ y: -10, transition: { duration: 0.2 } }}
                   onClick={() => {
                     setSelected(product);
                     window.location.href = "#selected-product";
@@ -80,9 +106,9 @@ function Products() {
 
                   {/* NEW SUBTEXT UNDER PRODUCT */}
                   <p className={styles.subtext}>{product.subtext}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
 
         </div>

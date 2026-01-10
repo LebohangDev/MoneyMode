@@ -60,13 +60,16 @@ function Home() {
               value={email}
               onChange={handleEmailChange}
             />
-            <button
-              type="submit"
-              className={styles.ctaButton}
-              disabled={!isValidEmail}
-            >
-              Get the Free Starter Kit
-            </button>
+            <a href="Ebooks/STARTER_KIT.pdf" download>
+              <button
+                type="button"
+                className={styles.ctaButton}
+                disabled={!isValidEmail}
+                onClick={() => { setEmail(""); setIsValidEmail(false); }}
+              >
+                Get the Free Starter Kit
+              </button>
+            </a>
           </div>
           <p className={styles.trustLine}>
             No spam. Sent instantly.

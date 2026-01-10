@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./Video.module.css";
+import { motion } from "framer-motion";
+import { fadeIn, scaleIn, slideUp } from "../animations";
 
 function Video() {
   const [email, setEmail] = useState("");
@@ -29,17 +31,29 @@ function Video() {
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* HEADLINE + SUBHEAD */}
-        <div className={styles.headerBlock}>
+        <motion.div
+          className={styles.headerBlock}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn(0.2)}
+        >
           <h2 className={styles.headline}>
             How I Built a $1M Creator Management System
           </h2>
           <p className={styles.subhead}>
             Watch the breakdown — then grab the free Starter Kit below.
           </p>
-        </div>
+        </motion.div>
 
         {/* VIDEO EMBED */}
-        <div className={styles.videoContainer}>
+        <motion.div
+          className={styles.videoContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={scaleIn(0.3)}
+        >
           <iframe
             className={styles.video}
             src="https://www.youtube.com/embed/TxdDeYXFoBk?si=oMNFyvQPPgOcxJ-P"
@@ -47,15 +61,21 @@ function Video() {
             frameBorder="0"
             allowFullScreen
           />
-        </div>
+        </motion.div>
 
         {/* CTA BLOCK */}
-        <div className={styles.ctaBlock}>
+        <motion.div
+          className={styles.ctaBlock}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={slideUp(0.4)}
+        >
           <p className={styles.ctaText}>
             Want the exact steps? Enter your email and I’ll send the 7-step Starter Kit instantly.
           </p>
 
-          <form className={styles.ctaForm} onSubmit={handleSubmit}>
+          <div className={styles.ctaForm}>
             <div className={styles.inputRow}>
               <input
                 type="email"
@@ -64,26 +84,34 @@ function Video() {
                 value={email}
                 onChange={handleEmailChange}
               />
-              <button
-                type="submit"
-                className={styles.submitButton}
-                disabled={!isValidEmail}
-              >
-                Get Free Starter Kit
-              </button>
+              <a href="Ebooks/STARTER_KIT.pdf" download>
+                <button
+                  className={styles.submitButton}
+                  disabled={!isValidEmail}
+                  onClick={() => { setEmail(""); setIsValidEmail(false); }}
+                >
+                  Get Free Starter Kit
+                </button>
+              </a>
             </div>
             <p className={styles.trustLine}>
               No spam. Instant access.
             </p>
-          </form>
+          </div>
 
           <a href="#product" className={styles.secondaryLink}>
             Apply for the Operator Program →
           </a>
-        </div>
+        </motion.div>
 
         {/* SUPPORTING BULLETS */}
-        <div className={styles.bulletsBlock}>
+        <motion.div
+          className={styles.bulletsBlock}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={slideUp(0.5)}
+        >
           <div className={styles.bulletItem}>
             <span className={styles.bulletPoint}>•</span>
             <p className={styles.bulletText}>How I signed my first creators</p>
@@ -96,7 +124,7 @@ function Video() {
             <span className={styles.bulletPoint}>•</span>
             <p className={styles.bulletText}>How we scale $30K–$50K/month accounts</p>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

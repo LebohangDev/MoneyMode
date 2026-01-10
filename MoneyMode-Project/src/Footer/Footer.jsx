@@ -22,9 +22,23 @@ function Footer() {
           <p className={styles.center}>Developed by Creators Blueprint</p>
 
           <div className={styles.icons}>
-            <img src="Icons/instagram.png" alt="Instagram" />
-            <img src="Icons/youtube.png" alt="YouTube" />
-            <img src="Icons/mail.png" alt="Mail" />
+            <a
+              href="https://www.instagram.com/moemoneyofficial/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="Icons/instagram.png" alt="Instagram" />
+            </a>
+            <a
+              href="http://www.youtube.com/@MoeMoney"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src="Icons/youtube.png" alt="YouTube" />
+            </a>
+            <a href="mailto:jabrim989@gmail.com">
+              <img src="Icons/mail.png" alt="Mail" />
+            </a>
           </div>
         </div>
 

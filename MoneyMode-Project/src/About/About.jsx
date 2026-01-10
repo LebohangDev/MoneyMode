@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import styles from "./About.module.css";
+import { motion } from "framer-motion";
+import { slideFromLeft, slideFromRight } from "../animations";
 
 function About() {
   const [email, setEmail] = useState("");
@@ -29,7 +31,13 @@ function About() {
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* LEFT SIDE (2 BLOCKS) */}
-        <div className={styles.leftColumn}>
+        <motion.div
+          className={styles.leftColumn}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={slideFromLeft(0.2)}
+        >
           {/* BLOCK 1 — MEET MOE + CTA */}
           <div className={styles.aboutBlock}>
             <h2 className={styles.heading}>
@@ -46,7 +54,7 @@ function About() {
             </p>
 
             {/* CTA FORM */}
-            <form className={styles.ctaForm} onSubmit={handleSubmit}>
+            <div className={styles.ctaForm}>
               <label className={styles.ctaLabel}>Get the Free Starter Kit →</label>
               <div className={styles.inputRow}>
                 <input
@@ -56,15 +64,17 @@ function About() {
                   value={email}
                   onChange={handleEmailChange}
                 />
-                <button
-                  type="submit"
-                  className={styles.submitButton}
-                  disabled={!isValidEmail}
-                >
-                  Get Instant Access
-                </button>
+                <a href="Ebooks/STARTER_KIT.pdf" download>
+                  <button
+                    className={styles.submitButton}
+                    disabled={!isValidEmail}
+                    onClick={() => { setEmail(""); setIsValidEmail(false); }}
+                  >
+                    Get Instant Access
+                  </button>
+                </a>
               </div>
-            </form>
+            </div>
           </div>
 
           {/* BLOCK 2 — STATS */}
@@ -82,16 +92,22 @@ function About() {
               <p className={styles.statLabel}>/month Accounts</p>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* RIGHT SIDE — IMAGE */}
-        <div className={styles.imageBlock}>
+        <motion.div
+          className={styles.imageBlock}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={slideFromRight(0.4)}
+        >
           <img
             src="Images/hero-img.png"
             alt="Moe"
             className={styles.image}
           />
-        </div>
+        </motion.div>
 
       </div>
     </section>

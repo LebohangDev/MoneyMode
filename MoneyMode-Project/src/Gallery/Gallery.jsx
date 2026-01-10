@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "./Gallery.module.css";
+import { motion } from "framer-motion";
+import { fadeIn, slideUp } from "../animations";
 
 const IMAGES = [
   "Images/gallery_1.png",
@@ -55,19 +57,34 @@ function Gallery() {
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* HEADING */}
-        <h2 className={styles.heading}>A Glimpse Into My World</h2>
+        <motion.h2
+          className={styles.heading}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={slideUp(0.2)}
+        >
+          A Glimpse Into My World
+        </motion.h2>
 
         {/* BACKGROUND BAR */}
         <div className={styles.backgroundBar}></div>
 
         {/* CAROUSEL */}
-        <div className={styles.carousel} ref={scrollRef}>
+        <motion.div
+          className={styles.carousel}
+          ref={scrollRef}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn(0.4)}
+        >
           {LOOP_IMAGES.map((src, index) => (
             <div key={index} className={styles.imageWrapper}>
               <img src={src} alt={`Gallery ${index}`} className={styles.image} />
             </div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
