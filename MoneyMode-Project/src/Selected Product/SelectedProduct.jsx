@@ -42,7 +42,7 @@ function SelectedProduct({ product }) {
     });
 
     // storing response from backend in json format
-    W
+
     const data = await res.json();
     console.log("Session response:", data);
 
