@@ -253,8 +253,10 @@
         margin-bottom: 1.5rem;
     }
 
-    .proofLine {
-        justify-content: center;
+
+
+    .proofLine::before {
+        display: none;
     }
 
     .emailRow {

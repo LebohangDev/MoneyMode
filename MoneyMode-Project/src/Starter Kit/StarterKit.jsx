@@ -67,7 +67,6 @@ function StarterKit() {
               className={styles.emailInput}
               value={email}
               onChange={handleEmailChange}
-              autoFocus={window.innerWidth < 768} // simple check for mobile intent, or just let native behavior handle it
             />
 
             {/* BUTTON */}
