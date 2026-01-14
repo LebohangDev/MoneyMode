@@ -4,6 +4,7 @@
 /* HERO SECTION - "LOUD POP" VIBE */
 .homeSection {
     width: 100%;
+    height: 100vh;
     padding: 8rem 2rem 4rem;
     /* Background Image with Gradient Overlay (Darker on Right) */
     /* background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 50%, #000000 100%),
@@ -28,6 +29,7 @@
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
     z-index: 2;
     padding-left: 2rem;
 }
