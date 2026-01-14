@@ -229,6 +229,8 @@
 @media (max-width: 767px) {
     .videoSection {
         padding: 4rem 1.5rem;
+        background-size: auto 100%;
+        background-position: center;
     }
 
     .wrapper {

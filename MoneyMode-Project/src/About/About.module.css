@@ -270,6 +270,13 @@
 /* RESPONSIVE */
 
 @media (max-width: 767px) {
+    .aboutSection {
+        /* background-position: 50% 20%; */
+        background-size: auto 100%;
+        background-position: center;
+        /* image-rendering: -webkit-optimize-contrast; */
+    }
+
     .wrapper {
         display: flex;
         flex-direction: column;
