@@ -8,7 +8,7 @@
     background-image:
         linear-gradient(rgba(0, 0, 0, 0.55),
             rgba(0, 0, 0, 0.75)),
-        url('/Images/section-bg-v2.png');
+        url('/Images/section-bg.png');
 
     background-size: cover;
     background-position: top center;
