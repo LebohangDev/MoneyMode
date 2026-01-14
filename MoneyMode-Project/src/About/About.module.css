@@ -306,12 +306,12 @@
 
     .imageBlock {
         width: 100%;
-        max-width: 500px;
+
         height: auto;
     }
 
     .image {
-        width: 100%;
+        width: 350px;
         height: auto;
         object-fit: cover;
     }
