@@ -7,6 +7,7 @@ const PRODUCTS = [
   {
     id: "starter",
     name: "Starter Kit",
+    step: "Step 1: Start Free",
     image: "Images/free-ebook-cover.png",
     tag: "FREE",
     type: "free",
@@ -18,6 +19,7 @@ const PRODUCTS = [
   {
     id: "guide",
     name: "Ultimate Guide",
+    step: "Step 2: Scale Up",
     image: "Images/paid-ebook-cover.png",
     tag: null,
     type: "paid",
@@ -31,6 +33,7 @@ const PRODUCTS = [
   {
     id: "sessions",
     name: "Operator Program",
+    step: "Step 3: Apply",
     image: "Images/sessions-cover.png",
     tag: null,
     type: "apply",
@@ -62,7 +65,7 @@ function Products() {
 
   return (
     <>
-      <section id="product" className="section">
+      <section id="product" className={styles.productsSection}>
         <div className={`section__inner ${styles.wrapper}`}>
 
           {/* NEW MAIN HEADING */}
@@ -72,7 +75,7 @@ function Products() {
 
           {/* NEW SUBTEXT */}
           <p className={styles.subHeading}>
-            Pick the stage you're at – I'll show you the next move.
+            Follow this 3-step path to building a $50K-$100K/month creator agency.
           </p>
 
           {/* PRODUCT CARDS */}
@@ -98,6 +101,8 @@ function Products() {
                     window.location.href = "#selected-product";
                   }}
                 >
+                  <p className={styles.step}>{product.step}</p>
+
                   {product.tag && <span className={styles.tag}>{product.tag}</span>}
 
                   <img src={product.image} alt={product.name} className={styles.image} />

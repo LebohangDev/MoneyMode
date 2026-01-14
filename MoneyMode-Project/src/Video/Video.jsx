@@ -27,7 +27,7 @@ function Video() {
   };
 
   return (
-    <section id="video" className="section">
+    <section id="video" className={styles.videoSection}>
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* HEADLINE + SUBHEAD */}
@@ -113,15 +113,15 @@ function Video() {
           variants={slideUp(0.5)}
         >
           <div className={styles.bulletItem}>
-            <span className={styles.bulletPoint}>•</span>
+            <span className={styles.bulletPoint}>✦</span>
             <p className={styles.bulletText}>How I signed my first creators</p>
           </div>
           <div className={styles.bulletItem}>
-            <span className={styles.bulletPoint}>•</span>
+            <span className={styles.bulletPoint}>✦</span>
             <p className={styles.bulletText}>The backend systems we run daily</p>
           </div>
           <div className={styles.bulletItem}>
-            <span className={styles.bulletPoint}>•</span>
+            <span className={styles.bulletPoint}>✦</span>
             <p className={styles.bulletText}>How we scale $30K–$50K/month accounts</p>
           </div>
         </motion.div>

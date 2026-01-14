@@ -57,7 +57,7 @@ function SelectedProduct({ product }) {
 
 
   return (
-    <section id="selected-product" className="section">
+    <section id="selected-product" className={styles.selectedProductSection}>
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* PRODUCT NAME CENTERED */}

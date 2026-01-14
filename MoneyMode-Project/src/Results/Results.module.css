@@ -1,3 +1,23 @@
+.resultsSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* increase section height */
+    padding: 6rem 6rem;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)),
+        url('/Images/section-bg3.png');
+
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -37,13 +57,26 @@
     width: 400px;
     padding: 20px;
     border-radius: 12px;
-    background: #1a1a1a;
+    /* background: #1a1a1a; */
     /* matte black */
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.45);
+    /* box-shadow: 0 0 25px rgba(0, 0, 0, 0.45); */
     display: flex;
     flex-direction: column;
     gap: 16px;
     text-align: left;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px) saturate(140%);
+    -webkit-backdrop-filter: blur(4px) saturate(140%);
+
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    box-shadow: 0 0 2px 1px #0ff;
+
 }
 
 /* LABEL */
@@ -85,6 +118,10 @@
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+    .resultsSection {
+        padding: 6rem 1rem;
+    }
+
     .card {
         width: 100%;
         max-width: 420px;

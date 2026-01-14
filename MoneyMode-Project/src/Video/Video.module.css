@@ -1,3 +1,24 @@
+.videoSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* increase section height */
+    padding: 6rem 6rem;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)),
+        url('/Images/section-bg3.png');
+
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    align-items: center;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -58,10 +79,35 @@
     text-align: center;
     gap: 1.5rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
+    /* background: linear-gradient(135deg, #1e1e1e 0%, #252525 100%);
     border-radius: 16px;
     border: 1px solid #333;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); */
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px) saturate(140%);
+    -webkit-backdrop-filter: blur(4px) saturate(140%);
+
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    overflow: hidden;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    will-change: transform, box-shadow;
+    box-shadow: 0 0 2px 1px #0ff;
+
+}
+
+.ctaBlock:hover {
+    box-shadow:
+        0 0px 60px rgba(150, 150, 150, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
 .ctaText {
@@ -179,6 +225,10 @@
 
 /* MOBILE */
 @media (max-width: 767px) {
+    .videoSection {
+        padding: 4rem 1.5rem;
+    }
+
     .wrapper {
         display: flex;
         flex-direction: column;
@@ -225,6 +275,11 @@
 
     .video {
         height: 250px;
+    }
+
+    .bulletsBlock {
+        width: 100%;
+        padding: 0 1.5rem;
     }
 }
 

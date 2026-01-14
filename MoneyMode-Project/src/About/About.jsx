@@ -27,7 +27,7 @@ function About() {
   };
 
   return (
-    <section id="about" className="section">
+    <section id="about" className={styles.aboutSection}>
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* LEFT SIDE (2 BLOCKS) */}

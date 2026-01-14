@@ -1,3 +1,23 @@
+.gallerySection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* increase section height */
+    padding: 6rem 6rem;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)),
+        url('/Images/section-bg3.png');
+
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+}
+
 .wrapper {
     position: relative;
     display: flex;
@@ -59,6 +79,15 @@
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
+    .gallerySection {
+        padding: 6rem 1rem;
+    }
+
+    .heading {
+        font-size: 32px;
+        text-align: center;
+    }
+
     .imageWrapper {
         min-width: 240px;
         height: 380px;

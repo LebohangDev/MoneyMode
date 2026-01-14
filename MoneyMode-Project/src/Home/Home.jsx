@@ -44,7 +44,7 @@ function Home() {
           </h1>
 
           <p className={styles.subheading}>
-            Free 7-step starter kit + scripts to land your first client.
+            Grab the exact scripts & system I used to sign creators making upto $50K/month - even if you're starting from scratch.
           </p>
 
           <p className={styles.clarityLine}>
@@ -82,13 +82,13 @@ function Home() {
           </a>
 
           {/* BOTTOM CENTER TEXT */}
-          <div className={styles.bottomCenter}>
+          {/* <div className={styles.bottomCenter}>
             <p className={styles.journeyText}>
               Start your MoneyMode journey
             </p>
 
             <i className={`ri-arrow-down-double-line ${styles.downIcon} `} />
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </section>

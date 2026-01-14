@@ -53,7 +53,7 @@ function Gallery() {
 
 
   return (
-    <section id="gallery" className="section">
+    <section id="gallery" className={styles.gallerySection}>
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* HEADING */}
