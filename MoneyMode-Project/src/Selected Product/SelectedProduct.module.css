@@ -1,3 +1,23 @@
+.selectedProductSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* increase section height */
+    padding: 6rem 6rem;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)),
+        url('/Images/section-bg4.png');
+
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+}
+
 /* WRAPPER */
 .wrapper {
     display: flex;
@@ -154,6 +174,10 @@
    RESPONSIVE — MOBILE STACK
 --------------------------------------- */
 @media (max-width: 900px) {
+    .selectedProductSection {
+        padding: 6rem 1rem;
+    }
+
     .content {
         flex-direction: column;
         align-items: center;

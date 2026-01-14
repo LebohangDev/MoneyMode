@@ -19,7 +19,7 @@ function StarterKit() {
   };
 
   return (
-    <section id="starter-kit" className="section">
+    <section id="starter-kit" className={styles.starterKitSection}>
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* LEFT SIDE CONTENT */}
@@ -46,16 +46,16 @@ function StarterKit() {
 
           <div className={styles.microBullets}>
             <div className={styles.bulletItem}>
-              <span className={styles.bulletPoint}>•</span>
-              <p>Who to DM (so you don’t waste time)</p>
+              {/* <span className={styles.bulletPoint}>•</span> */}
+              <p>⭐Who to DM (so you don’t waste time)</p>
             </div>
             <div className={styles.bulletItem}>
-              <span className={styles.bulletPoint}>•</span>
-              <p>What to say to get replies</p>
+              {/* <span className={styles.bulletPoint}>•</span> */}
+              <p>⭐What to say to get replies</p>
             </div>
             <div className={styles.bulletItem}>
-              <span className={styles.bulletPoint}>•</span>
-              <p>What to do when they say “yes”</p>
+              {/* <span className={styles.bulletPoint}>•</span> */}
+              <p>⭐What to do when they say “yes”</p>
             </div>
           </div>
 

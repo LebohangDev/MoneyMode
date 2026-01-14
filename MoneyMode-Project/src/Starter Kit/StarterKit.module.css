@@ -1,3 +1,23 @@
+.starterKitSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* increase section height */
+    padding: 6rem 6rem;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)),
+        url('/Images/section-bg2.png');
+
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+}
+
 .wrapper {
     display: flex;
     justify-content: space-between;
@@ -33,7 +53,9 @@
 .subheading span {
     font-weight: 700;
     font-size: 7rem;
-    background: linear-gradient(to right, #FFFFFF 0%, #999999 100%);
+    /* background: linear-gradient(to right, #FFFFFF 0%, #999999 100%); */
+    background: rgb(65, 105, 225);
+    background: linear-gradient(159deg, rgba(65, 105, 225, 1) 0%, rgba(137, 207, 240, 1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -152,7 +174,7 @@ a .ctaButton {
 
 /* RIGHT SIDE IMAGE */
 .right {
-    width: 500px;
+    width: 400px;
     height: auto;
     display: flex;
     justify-content: center;
@@ -164,10 +186,15 @@ a .ctaButton {
     border-radius: 12px;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
     object-fit: cover;
+    box-shadow: 0 0 20px 10px #0ff;
 }
 
 /* RESPONSIVE */
 @media (max-width: 1000px) {
+    .starterKitSection {
+        padding: 6rem 1rem;
+    }
+
     .wrapper {
         flex-direction: column;
         text-align: center;

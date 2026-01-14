@@ -22,7 +22,7 @@ const results = [
 
 function Results() {
   return (
-    <section id="results" className="section">
+    <section id="results" className={styles.resultsSection}>
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* HEADING */}

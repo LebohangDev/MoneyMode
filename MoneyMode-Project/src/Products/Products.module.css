@@ -1,3 +1,23 @@
+.productsSection {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* increase section height */
+    padding: 6rem 6rem;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.55),
+            rgba(0, 0, 0, 0.75)),
+        url('/Images/section-bg4.png');
+
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+}
+
 .wrapper {
     display: flex;
     flex-direction: column;
@@ -58,11 +78,11 @@
 /* PRODUCT CARD */
 .card {
     width: 300px;
-    height: 540px;
+    height: 600px;
     /* slightly taller for subtext */
     padding: 20px;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #393939 0%, #2a2a2a 100%);
+    /* border-radius: 12px; */
+    /* background: linear-gradient(145deg, #393939 0%, #2a2a2a 100%); */
     cursor: pointer;
     /* transition is handled by framer motion mostly, but keeping for color changes */
     transition: box-shadow 0.2s ease, border-color 0.2s ease;
@@ -70,15 +90,37 @@
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(4px) saturate(140%);
+    -webkit-backdrop-filter: blur(4px) saturate(140%);
+
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+    box-shadow: 0 0 2px 1px #0ff;
+
+
 }
 
 /* Note: Hover transform is now handled by framer motion */
 
 /* SELECTED HIGHLIGHT */
 .selected {
-    border-color: rgba(255, 255, 255, 0.4);
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 10px 30px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(145deg, #4a4a4a 0%, #353535 100%);
+    background: rgba(255, 255, 255, 0.149);
+    backdrop-filter: blur(15px) saturate(140%);
+    -webkit-backdrop-filter: blur(15px) saturate(140%);
+
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 30px 60px rgba(150, 150, 150, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.2);
+
 }
 
 /* FREE TAG */
@@ -93,6 +135,16 @@
     font-size: 14px;
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(217, 8, 8, 0.5);
+}
+
+.step {
+    font-size: 20px;
+    font-weight: 700;
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+    color: #f5c16c;
+    /* subtle gold highlight */
+    margin-bottom: 12px;
 }
 
 /* IMAGE */
@@ -146,6 +198,10 @@
 }
 
 @media (max-width: 700px) {
+    .productsSection {
+        padding: 6rem 1rem;
+    }
+
     .bgBar {
         height: 650px;
     }

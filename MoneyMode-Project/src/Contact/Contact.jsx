@@ -4,7 +4,7 @@ import styles from "./Contact.module.css";
 
 function Contact() {
   return (
-    <section id="contact" className="section">
+    <section id="contact" className={styles.contactSection}>
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* HEADING */}
