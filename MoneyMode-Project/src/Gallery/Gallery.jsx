@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Gallery.module.css";
 import { motion } from "framer-motion";
 import { fadeIn, slideUp } from "../animations";
@@ -10,10 +10,12 @@ const IMAGES = [
   "Images/gallery_4.png",
 ];
 
-const LOOP_IMAGES = [...IMAGES, ...IMAGES]; // Duplicate for seamless loop
+const LOOP_IMAGES = [...IMAGES, ...IMAGES];
 
 function Gallery() {
   const scrollRef = useRef(null);
+  const autoScrollRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Auto-scroll effect
   useEffect(() => {
@@ -21,36 +23,34 @@ function Gallery() {
     if (!container) return;
 
     const scrollStep = 0.5;
-    let animationId;
 
     const autoScroll = () => {
-      // Reset when we've scrolled halfway (first image set)
-      if (container.scrollLeft >= container.scrollWidth / 2) {
-        container.scrollLeft = 0;
-      } else {
-        container.scrollLeft += scrollStep;
+      if (!isPaused) {
+        if (container.scrollLeft >= container.scrollWidth / 2) {
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft += scrollStep;
+        }
       }
-
-      animationId = requestAnimationFrame(autoScroll);
+      autoScrollRef.current = requestAnimationFrame(autoScroll);
     };
 
-    animationId = requestAnimationFrame(autoScroll);
+    autoScrollRef.current = requestAnimationFrame(autoScroll);
 
-    const stopScroll = () => cancelAnimationFrame(animationId);
-    const resumeScroll = () => {
-      animationId = requestAnimationFrame(autoScroll);
-    };
+    return () => cancelAnimationFrame(autoScrollRef.current);
+  }, [isPaused]);
 
-    container.addEventListener("mouseenter", stopScroll);
-    container.addEventListener("mouseleave", resumeScroll);
+  // Manual scroll function
+  const scrollByAmount = (amount) => {
+    const container = scrollRef.current;
+    if (!container) return;
 
-    return () => {
-      cancelAnimationFrame(animationId);
-      container.removeEventListener("mouseenter", stopScroll);
-      container.removeEventListener("mouseleave", resumeScroll);
-    };
-  }, []);
+    setIsPaused(true);
+    container.scrollBy({ left: amount, behavior: "smooth" });
 
+    // Resume auto-scroll after 2 seconds
+    setTimeout(() => setIsPaused(false), 2000);
+  };
 
   return (
     <section id="gallery" className={styles.gallerySection}>
@@ -69,6 +69,23 @@ function Gallery() {
 
         {/* BACKGROUND BAR */}
         <div className={styles.backgroundBar}></div>
+
+        {/* ARROWS */}
+        <button
+          className={`${styles.arrow} ${styles.leftArrow}`}
+          onClick={() => scrollByAmount(-300)}
+        >
+          {/* ‹ */}
+          <i class="ri-arrow-left-s-line"></i>
+        </button>
+
+        <button
+          className={`${styles.arrow} ${styles.rightArrow}`}
+          onClick={() => scrollByAmount(300)}
+        >
+          {/* › */}
+          <i class="ri-arrow-right-s-line"></i>
+        </button>
 
         {/* CAROUSEL */}
         <motion.div

@@ -1,26 +1,16 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Results.module.css";
 
 const results = [
-  {
-    id: 1,
-    label: "$196,176.65 in 180 days",
-    image: "Images/result-1.jpg",
-  },
-  {
-    id: 2,
-    label: "$27,205.07 in 30 days",
-    image: "Images/result-2.jpg",
-  },
-  {
-    id: 3,
-    label: "$13,265.14 in 30 days",
-    image: "Images/result-3.jpg",
-  },
+  { id: 1, label: "$196,176.65 in 180 days", image: "Images/result-1.jpg" },
+  { id: 2, label: "$27,205.07 in 30 days", image: "Images/result-2.jpg" },
+  { id: 3, label: "$13,265.14 in 30 days", image: "Images/result-3.jpg" },
 ];
 
 function Results() {
+  const [activeImage, setActiveImage] = useState(null);
+
   return (
     <section id="results" className={styles.resultsSection}>
       <div className={`section__inner ${styles.wrapper}`}>
@@ -57,14 +47,11 @@ function Results() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.15 }}
+              whileHover={{ scale: 1.03 }}
+              onClick={() => setActiveImage(item)}
             >
               <p className={styles.label}>{item.label}</p>
-
-              <img
-                src={item.image}
-                alt={item.label}
-                className={styles.image}
-              />
+              <img src={item.image} alt={item.label} className={styles.image} />
             </motion.div>
           ))}
         </div>
@@ -83,6 +70,35 @@ function Results() {
         </motion.a>
 
       </div>
+
+      {/* POPUP MODAL */}
+      <AnimatePresence>
+        {activeImage && (
+          <motion.div
+            className={styles.modalOverlay}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setActiveImage(null)}
+          >
+            <motion.div
+              className={styles.modalContent}
+              initial={{ scale: 0.6, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.6, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 200, damping: 20 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={activeImage.image}
+                alt={activeImage.label}
+                className={styles.modalImage}
+              />
+              <p className={styles.modalLabel}>{activeImage.label}</p>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

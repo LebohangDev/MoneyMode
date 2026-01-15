@@ -172,6 +172,15 @@
     box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
 }
 
+.statsRow {
+    grid-column: 1 / -1;
+    /* spans full width of the grid */
+    display: flex;
+    justify-content: center;
+    margin-top: -2rem;
+}
+
+
 /* BLOCK 2 — STATS */
 .statsBlock {
     display: flex;
@@ -251,7 +260,7 @@
     align-items: center;
     border-radius: 16px;
     overflow: visible;
-    margin-top: 4rem;
+    margin-top: 0rem;
 }
 
 .image {
@@ -271,6 +280,7 @@
         background-size: auto 100%;
         background-position: center;
         /* image-rendering: -webkit-optimize-contrast; */
+        padding: 6rem 1rem;
     }
 
     .wrapper {
@@ -291,6 +301,11 @@
 
     .heading {
         text-align: center;
+    }
+
+    .statsRow {
+        margin-top: 0rem;
+        width: 100%;
     }
 
     .statsBlock {

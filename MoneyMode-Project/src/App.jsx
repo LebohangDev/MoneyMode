@@ -35,10 +35,10 @@ function App() {
       <div className="main">
         <Home />
         <About />
+        <Results />
         <Video />
         <StarterKit />
         <Products />
-        <Results />
         {/* <Testimonials /> */}
         <Contact />
         <Gallery />
