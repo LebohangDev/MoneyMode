@@ -291,6 +291,11 @@
         width: 100%;
     }
 
+    .leftColumn {
+        width: 100%;
+        align-items: center;
+    }
+
 
     .aboutBlock {
         width: 100%;
