@@ -9,7 +9,7 @@
     /* Background Image with Gradient Overlay (Darker on Right) */
     /* background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 50%, #000000 100%),
         url('/Images/gallery_1.png'); */
-    background: url('Images/moe-hero.png');
+    background: url('/Images/moe-hero.png');
     background-size: cover;
     background-position: top left;
     background-repeat: no-repeat;
