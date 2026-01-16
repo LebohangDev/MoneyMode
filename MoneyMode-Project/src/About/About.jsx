@@ -78,7 +78,7 @@ function About() {
           </div>
 
           {/* BLOCK 2 — STATS */}
-          <div className={styles.statsBlock}>
+          {/* <div className={styles.statsBlock}>
             <div className={styles.statItem}>
               <p className={styles.statNumber}>Over $1M</p>
               <p className={styles.statLabel}>Generated (2025)</p>
@@ -91,7 +91,7 @@ function About() {
               <p className={styles.statNumber}>$30K–$70K</p>
               <p className={styles.statLabel}>/month Accounts</p>
             </div>
-          </div>
+          </div> */}
         </motion.div>
 
         {/* RIGHT SIDE — IMAGE */}
@@ -108,6 +108,24 @@ function About() {
             className={styles.image}
           />
         </motion.div>
+
+        <div className={styles.statsRow}>
+        {/* BLOCK 2 — STATS */}
+          <div className={styles.statsBlock}>
+            <div className={styles.statItem}>
+              <p className={styles.statNumber}>Over $1M</p>
+              <p className={styles.statLabel}>Generated (2025)</p>
+            </div>
+            <div className={styles.statItem}>
+              <p className={styles.statNumber}>20+</p>
+              <p className={styles.statLabel}>Person Team</p>
+            </div>
+            <div className={styles.statItem}>
+              <p className={styles.statNumber}>$30K–$70K</p>
+              <p className={styles.statLabel}>/month Accounts</p>
+            </div>
+          </div>
+        </div>  
 
       </div>
     </section>

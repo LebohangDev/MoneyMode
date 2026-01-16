@@ -176,6 +176,15 @@
     box-shadow: 0 0 20px rgba(124, 58, 237, 0.4);
 }
 
+.statsRow {
+    grid-column: 1 / -1;
+    /* spans full width of the grid */
+    display: flex;
+    justify-content: center;
+    margin-top: -2rem;
+}
+
+
 /* BLOCK 2 — STATS */
 .statsBlock {
     display: flex;
@@ -255,7 +264,7 @@
     align-items: center;
     border-radius: 16px;
     overflow: visible;
-    margin-top: 4rem;
+    margin-top: 0rem;
 }
 
 .image {
@@ -275,6 +284,7 @@
         background-size: auto 100%;
         background-position: center;
         /* image-rendering: -webkit-optimize-contrast; */
+        padding: 6rem 1rem;
     }
 
     .wrapper {
@@ -283,6 +293,11 @@
         align-items: center;
         gap: 2rem;
         width: 100%;
+    }
+
+    .leftColumn {
+        width: 100%;
+        align-items: center;
     }
 
 
@@ -295,6 +310,30 @@
 
     .heading {
         text-align: center;
+    }
+
+    .inputRow {
+        flex-direction: column;
+        width: 100%;
+        height: 7.7rem;
+        box-shadow: none;
+    }
+
+    .emailInput {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .submitButton {
+        width: 100%;
+        border-radius: 8px;
+        margin-top: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .statsRow {
+        margin-top: 0rem;
+        width: 100%;
     }
 
     .statsBlock {
@@ -316,10 +355,10 @@
         object-fit: cover;
     }
 
-    .submitButton {
+    /* .submitButton {
         font-size: 0.7rem;
 
-    }
+    } */
 }
 
 
