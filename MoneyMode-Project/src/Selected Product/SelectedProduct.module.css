@@ -178,6 +178,7 @@
 @media (max-width: 900px) {
     .selectedProductSection {
         padding: 6rem 1rem;
+        background-attachment: scroll;
     }
 
     .content {

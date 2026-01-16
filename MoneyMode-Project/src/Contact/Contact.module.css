@@ -170,6 +170,7 @@
 @media (max-width: 900px) {
     .contactSection {
         padding: 6rem 1rem;
+        background-attachment: scroll;
     }
 
     .block {

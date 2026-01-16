@@ -202,6 +202,7 @@
 @media (max-width: 700px) {
     .productsSection {
         padding: 6rem 1rem;
+        background-attachment: scroll;
     }
 
     .bgBar {

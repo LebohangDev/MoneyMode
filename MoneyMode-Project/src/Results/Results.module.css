@@ -165,6 +165,7 @@
 @media (max-width: 900px) {
     .resultsSection {
         padding: 6rem 1rem;
+        background-attachment: scroll;
     }
 
     .card {

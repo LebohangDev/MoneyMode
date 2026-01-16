@@ -194,6 +194,7 @@ a .ctaButton {
 @media (max-width: 1000px) {
     .starterKitSection {
         padding: 6rem 1rem;
+        background-attachment: scroll;
     }
 
     .wrapper {
