@@ -18,14 +18,6 @@ function About() {
     checkEmailValidation(newEmail);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isValidEmail) {
-      console.log("Email submitted:", email);
-      // Logic to send email/PDF would go here
-    }
-  };
-
   return (
     <section id="about" className={styles.aboutSection}>
       <div className={`section__inner ${styles.wrapper}`}>
@@ -77,21 +69,6 @@ function About() {
             </div>
           </div>
 
-          {/* BLOCK 2 — STATS */}
-          {/* <div className={styles.statsBlock}>
-            <div className={styles.statItem}>
-              <p className={styles.statNumber}>Over $1M</p>
-              <p className={styles.statLabel}>Generated (2025)</p>
-            </div>
-            <div className={styles.statItem}>
-              <p className={styles.statNumber}>20+</p>
-              <p className={styles.statLabel}>Person Team</p>
-            </div>
-            <div className={styles.statItem}>
-              <p className={styles.statNumber}>$30K–$70K</p>
-              <p className={styles.statLabel}>/month Accounts</p>
-            </div>
-          </div> */}
         </motion.div>
 
         {/* RIGHT SIDE — IMAGE */}
@@ -110,7 +87,7 @@ function About() {
         </motion.div>
 
         <div className={styles.statsRow}>
-        {/* BLOCK 2 — STATS */}
+          {/* BLOCK 2 — STATS */}
           <div className={styles.statsBlock}>
             <div className={styles.statItem}>
               <p className={styles.statNumber}>Over $1M</p>
@@ -125,7 +102,7 @@ function About() {
               <p className={styles.statLabel}>/month Accounts</p>
             </div>
           </div>
-        </div>  
+        </div>
 
       </div>
     </section>
