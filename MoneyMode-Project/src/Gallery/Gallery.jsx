@@ -14,7 +14,6 @@ const LOOP_IMAGES = [...IMAGES, ...IMAGES];
 
 function Gallery() {
   const scrollRef = useRef(null);
-  const autoScrollRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
   // Auto-scroll effect
@@ -32,12 +31,9 @@ function Gallery() {
           container.scrollLeft += scrollStep;
         }
       }
-      autoScrollRef.current = requestAnimationFrame(autoScroll);
+
     };
 
-    autoScrollRef.current = requestAnimationFrame(autoScroll);
-
-    return () => cancelAnimationFrame(autoScrollRef.current);
   }, [isPaused]);
 
   // Manual scroll function
