@@ -5,21 +5,18 @@
 .homeSection {
     width: 100%;
     height: 100vh;
-    padding: 8rem 2rem 4rem;
-    /* Background Image with Gradient Overlay (Darker on Right) */
-    /* background: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 50%, #000000 100%),
-        url('/Images/gallery_1.png'); */
-    background: url('/Images/moe-hero.png');
+
+
+    background: url('/Images/moe-hero2.png');
     background-size: cover;
-    background-position: top left;
+    background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
-    /* margin-top: 5rem; */
     padding: 15rem 2rem 4rem;
 }
 
@@ -227,8 +224,11 @@
 @media (max-width: 767px) {
     .homeSection {
         /* padding: 6rem 1.5rem 4rem; */
-        background-position: top right;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/Images/moe-hero.png');
+        background-position: center;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/Images/moe_mobile_hero.jpeg');
+        background-size: cover;
+        height: 100vh;
+        object-fit: cover;
         background-attachment: scroll;
         padding: 10rem 1.5rem 4rem;
     }
@@ -338,13 +338,17 @@
 @media (min-width: 768px) and (max-width: 1280px) and (orientation: portrait) {
     .homeSection {
         padding: 6rem 2rem;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/Images/moe_mobile_hero.jpeg');
+        background-size: cover;
+        background-position: center bottom;
+        background-repeat: no-repeat;
     }
 
     .inner {
         grid-template-columns: 1fr;
         gap: 3rem;
         text-align: center;
-        justify-items: center;
+        justify-content: center;
     }
 
     .content {
@@ -379,4 +383,38 @@
     .trustLine {
         justify-content: center;
     }
+}
+
+/* pad pro portrait */
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
+
+
+    .homeSection {
+        padding: 6rem 2rem;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/Images/moe_mobile_hero.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .content {
+        align-items: center;
+        text-align: center;
+        order: 1;
+    }
+
+    .imageWrapper {
+        width: 100%;
+        order: 2;
+    }
+
+
 }
