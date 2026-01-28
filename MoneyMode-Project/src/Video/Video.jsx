@@ -1,11 +1,14 @@
+// src/Video/Video.jsx
 import React, { useState } from "react";
 import styles from "./Video.module.css";
 import { motion } from "framer-motion";
 import { fadeIn, scaleIn, slideUp } from "../animations";
+import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
 
 function Video() {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const checkEmailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -18,16 +21,55 @@ function Video() {
     checkEmailValidation(newEmail);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (isValidEmail) {
-      console.log("Email submitted:", email);
-      // Logic to send email/PDF would go here
+  // Helper to trigger download programmatically
+  const triggerDownload = (url) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleFreeClick = () => {
+    setShowPopup(true);
+  };
+
+  const handlePopupConfirm = async (permission) => {
+    setShowPopup(false);
+
+    // Logic to send email
+    console.log("Sending starter kit email to:", email);
+    console.log("Permission:", permission);
+
+    try {
+      if (permission) {
+        await fetch("http://localhost:3000/api/send-starter-kit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, permission })
+        });
+        console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+      }
+    } catch (err) {
+      console.error("Error sending email:", err);
     }
+
+    // Trigger download
+    triggerDownload("Ebooks/STARTER_KIT.pdf");
+
+    // Clear state
+    setEmail("");
+    setIsValidEmail(false);
   };
 
   return (
     <section id="video" className={styles.videoSection}>
+      <PromotionalPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        onConfirm={handlePopupConfirm}
+      />
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* HEADLINE + SUBHEAD */}
@@ -84,15 +126,13 @@ function Video() {
                 value={email}
                 onChange={handleEmailChange}
               />
-              <a href="Ebooks/STARTER_KIT.pdf" download>
-                <button
-                  className={styles.submitButton}
-                  disabled={!isValidEmail}
-                  onClick={() => { setEmail(""); setIsValidEmail(false); }}
-                >
-                  Get Free Starter Kit
-                </button>
-              </a>
+              <button
+                className={styles.submitButton}
+                disabled={!isValidEmail}
+                onClick={handleFreeClick}
+              >
+                Get Free Starter Kit
+              </button>
             </div>
             <p className={styles.trustLine}>
               No spam. Instant access.

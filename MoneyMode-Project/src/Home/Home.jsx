@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import styles from "./Home.module.css";
 import { motion } from "framer-motion";
 import { fadeIn, slideFromLeft, slideUp } from "../animations";
+import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
 
 function Home() {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const checkEmailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -20,9 +22,56 @@ function Home() {
     checkEmailValidation(newEmail);
   };
 
+  // Helper to trigger download programmatically
+  const triggerDownload = (url) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleFreeClick = () => {
+    setShowPopup(true);
+  };
+
+  const handlePopupConfirm = async (permission) => {
+    setShowPopup(false);
+
+    // Logic to send email
+    console.log("Sending starter kit email to:", email);
+    console.log("Permission:", permission);
+
+    try {
+      if (permission) {
+        await fetch("http://localhost:3000/api/send-starter-kit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, permission })
+        });
+        console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+      }
+    } catch (err) {
+      console.error("Error sending email:", err);
+    }
+
+    // Trigger download
+    triggerDownload("Ebooks/STARTER_KIT.pdf");
+
+    // Clear state
+    setEmail("");
+    setIsValidEmail(false);
+  };
+
 
   return (
     <section id="home" className={styles.homeSection}>
+      <PromotionalPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        onConfirm={handlePopupConfirm}
+      />
       <div className={`section__inner ${styles.inner} `}>
 
 
@@ -60,16 +109,14 @@ function Home() {
               value={email}
               onChange={handleEmailChange}
             />
-            <a href="Ebooks/STARTER_KIT.pdf" download>
-              <button
-                type="button"
-                className={styles.ctaButton}
-                disabled={!isValidEmail}
-                onClick={() => { setEmail(""); setIsValidEmail(false); }}
-              >
-                Get the Free Starter Kit
-              </button>
-            </a>
+            <button
+              type="button"
+              className={styles.ctaButton}
+              disabled={!isValidEmail}
+              onClick={handleFreeClick}
+            >
+              Get the Free Starter Kit
+            </button>
           </div>
           <p className={styles.trustLine}>
             No spam. Sent instantly.

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import styles from "./SelectedProduct.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
 
 function SelectedProduct({ product }) {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const checkEmailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -17,7 +19,48 @@ function SelectedProduct({ product }) {
     checkEmailValidation(newEmail);
   };
 
+  // Helper to trigger download programmatically
+  const triggerDownload = (url) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
+  const handleFreeClick = () => {
+    setShowPopup(true);
+  };
+
+  const handlePopupConfirm = async (permission) => {
+    setShowPopup(false);
+
+    // Logic to send email
+    // "send all email and with permitiion: {radio results}"
+    console.log("Sending starter kit email to:", email);
+    console.log("Permission:", permission);
+
+    try {
+      if (permission) {
+        await fetch("http://localhost:3000/api/send-starter-kit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, permission })
+        });
+        console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+      }
+    } catch (err) {
+      console.error("Error sending email:", err);
+    }
+
+    // Trigger download
+    triggerDownload("Ebooks/STARTER_KIT.pdf");
+
+    // Clear state
+    setEmail("");
+    setIsValidEmail(false);
+  };
 
   // asyncronous function to handle stripe checkout when called 
   async function handleCheckout(product) {
@@ -58,6 +101,12 @@ function SelectedProduct({ product }) {
 
   return (
     <section id="selected-product" className={styles.selectedProductSection}>
+      <PromotionalPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        onConfirm={handlePopupConfirm}
+      />
+
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* PRODUCT NAME CENTERED */}
@@ -96,15 +145,13 @@ function SelectedProduct({ product }) {
                 {/* CTA BUTTON */}
                 {/* CTA BUTTON / DOWNLOAD LINK */}
                 {product.type === "free" ? (
-                  <a href="Ebooks/STARTER_KIT.pdf" download>
-                    <button
-                      className={styles.ctaButton}
-                      disabled={!isValidEmail}
-                      onClick={() => { setEmail(""); setIsValidEmail(false); }}
-                    >
-                      {product.cta}
-                    </button>
-                  </a>
+                  <button
+                    className={styles.ctaButton}
+                    disabled={!isValidEmail}
+                    onClick={handleFreeClick}
+                  >
+                    {product.cta}
+                  </button>
                 ) : product.type === "apply" ? (
                   <a href="Ebooks/Operator_Program.pdf" download>
                     <button

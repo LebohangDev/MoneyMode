@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import styles from "./StarterKit.module.css";
 import { motion } from "framer-motion";
 import { slideFromLeft, fadeIn } from "../animations";
+import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
 
 function StarterKit() {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const checkEmailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -18,8 +20,55 @@ function StarterKit() {
     checkEmailValidation(newEmail);
   };
 
+  // Helper to trigger download programmatically
+  const triggerDownload = (url) => {
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleFreeClick = () => {
+    setShowPopup(true);
+  };
+
+  const handlePopupConfirm = async (permission) => {
+    setShowPopup(false);
+
+    // Logic to send email
+    console.log("Sending starter kit email to:", email);
+    console.log("Permission:", permission);
+
+    try {
+      if (permission) {
+        await fetch("http://localhost:3000/api/send-starter-kit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, permission })
+        });
+        console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+      }
+    } catch (err) {
+      console.error("Error sending email:", err);
+    }
+
+    // Trigger download
+    triggerDownload("Ebooks/STARTER_KIT.pdf");
+
+    // Clear state
+    setEmail("");
+    setIsValidEmail(false);
+  };
+
   return (
     <section id="starter-kit" className={styles.starterKitSection}>
+      <PromotionalPopup
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        onConfirm={handlePopupConfirm}
+      />
       <div className={`section__inner ${styles.wrapper}`}>
 
         {/* LEFT SIDE CONTENT */}
@@ -70,15 +119,13 @@ function StarterKit() {
             />
 
             {/* BUTTON */}
-            <a className={styles.ctaButtona} href="Ebooks/STARTER_KIT.pdf" download>
-              <button
-                className={styles.ctaButton}
-                disabled={!isValidEmail}
-                onClick={() => { setEmail(""); setIsValidEmail(false); }}
-              >
-                Send Me The Starter Kit
-              </button>
-            </a>
+            <button
+              className={styles.ctaButton}
+              disabled={!isValidEmail}
+              onClick={handleFreeClick}
+            >
+              Send Me The Starter Kit
+            </button>
           </div>
 
           {/* SECONDARY CTA */}

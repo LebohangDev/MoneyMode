@@ -45,7 +45,7 @@ const PRODUCTS = [
 ];
 
 function Products() {
-  const [selected, setSelected] = useState(PRODUCTS[0]);
+  const [selected, setSelected] = useState(PRODUCTS[1]);
 
   // Animation Variants
   const containerVariants = {
