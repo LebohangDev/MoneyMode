@@ -43,7 +43,7 @@ function SelectedProduct({ product }) {
 
     try {
       if (permission) {
-        await fetch("http://localhost:3000/api/send-starter-kit", {
+        await fetch("https://moebackend.onrender.com/api/send-starter-kit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, permission })
