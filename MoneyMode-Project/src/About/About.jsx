@@ -37,18 +37,16 @@ function About() {
     console.log("Permission:", permission);
 
     try {
-      if (permission) {
-        await fetch("https://moebackend.onrender.com/api/send-starter-kit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, permission })
-        });
-        console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+      await fetch("https://moebackend.onrender.com/api/send-starter-kit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, permission })
+      });
+      console.log(`Permission ${permission ? "granted" : "denied"}: Sending Starter Kit.`);
 
-        // Show success popup
-        setEmailPopup(true);
-        setTimeout(() => setEmailPopup(false), 5000);
-      }
+      // Show success popup
+      setEmailPopup(true);
+      setTimeout(() => setEmailPopup(false), 5000);
     } catch (err) {
       console.error("Error sending email:", err);
     }
