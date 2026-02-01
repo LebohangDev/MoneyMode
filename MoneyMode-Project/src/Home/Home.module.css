@@ -82,6 +82,7 @@
     margin: 0 0 2rem 0;
     line-height: 1.5;
     max-width: 90%;
+    text-align: left;
 }
 
 /* CLARITY LINE - REMOVE DOUBT */
@@ -257,6 +258,8 @@
     .subheading {
         font-size: 1.1rem;
         margin-bottom: 1.5rem;
+
+        text-align: center;
     }
 
 

@@ -4,11 +4,13 @@ import styles from "./About.module.css";
 import { motion } from "framer-motion";
 import { slideFromLeft, slideFromRight } from "../animations";
 import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
+import EmailPopup from "../EmailPopup/EmailPopup";
 
 function About() {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [emailPopup, setEmailPopup] = useState(false);
 
   const checkEmailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -21,15 +23,7 @@ function About() {
     checkEmailValidation(newEmail);
   };
 
-  // Helper to trigger download programmatically
-  const triggerDownload = (url) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', '');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+
 
   const handleFreeClick = () => {
     setShowPopup(true);
@@ -50,13 +44,16 @@ function About() {
           body: JSON.stringify({ email, permission })
         });
         console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+
+        // Show success popup
+        setEmailPopup(true);
+        setTimeout(() => setEmailPopup(false), 5000);
       }
     } catch (err) {
       console.error("Error sending email:", err);
     }
 
-    // Trigger download
-    triggerDownload("Ebooks/STARTER_KIT.pdf");
+
 
     // Clear state
     setEmail("");
@@ -69,6 +66,11 @@ function About() {
         isOpen={showPopup}
         onClose={() => setShowPopup(false)}
         onConfirm={handlePopupConfirm}
+      />
+      {/* SUCCESS EMAIL POPUP */}
+      <EmailPopup
+        isOpen={emailPopup}
+        onClose={() => setEmailPopup(false)}
       />
       <div className={`section__inner ${styles.wrapper}`}>
 

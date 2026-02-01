@@ -3,11 +3,13 @@ import styles from "./StarterKit.module.css";
 import { motion } from "framer-motion";
 import { slideFromLeft, fadeIn } from "../animations";
 import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
+import EmailPopup from "../EmailPopup/EmailPopup";
 
 function StarterKit() {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [emailPopup, setEmailPopup] = useState(false);
 
   const checkEmailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -20,15 +22,7 @@ function StarterKit() {
     checkEmailValidation(newEmail);
   };
 
-  // Helper to trigger download programmatically
-  const triggerDownload = (url) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', '');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+
 
   const handleFreeClick = () => {
     setShowPopup(true);
@@ -49,13 +43,16 @@ function StarterKit() {
           body: JSON.stringify({ email, permission })
         });
         console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+
+        // Show success popup
+        setEmailPopup(true);
+        setTimeout(() => setEmailPopup(false), 5000);
       }
     } catch (err) {
       console.error("Error sending email:", err);
     }
 
-    // Trigger download
-    triggerDownload("Ebooks/STARTER_KIT.pdf");
+
 
     // Clear state
     setEmail("");
@@ -68,6 +65,11 @@ function StarterKit() {
         isOpen={showPopup}
         onClose={() => setShowPopup(false)}
         onConfirm={handlePopupConfirm}
+      />
+      {/* SUCCESS EMAIL POPUP */}
+      <EmailPopup
+        isOpen={emailPopup}
+        onClose={() => setEmailPopup(false)}
       />
       <div className={`section__inner ${styles.wrapper}`}>
 
@@ -84,13 +86,13 @@ function StarterKit() {
             Get the FREE Starter Kit
           </h2>
 
-          <p className={styles.subheading}>
+          <div className={styles.subheading}>
             <span>7</span>
             <div className={styles.text}>
               <p>Steps</p>
               <p>To Sign Your First Creator</p>
             </div>
-          </p>
+          </div>
 
 
           <div className={styles.microBullets}>

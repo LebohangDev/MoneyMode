@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import styles from "./SelectedProduct.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
+import EmailPopup from "../EmailPopup/EmailPopup";
 
 function SelectedProduct({ product }) {
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [message, setMessage] = useState("");
+  const [emailPopup, setEmailPopup] = useState(false);
 
   const checkEmailValidation = (email) => {
     const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -17,16 +20,6 @@ function SelectedProduct({ product }) {
     const newEmail = e.target.value;
     setEmail(newEmail);
     checkEmailValidation(newEmail);
-  };
-
-  // Helper to trigger download programmatically
-  const triggerDownload = (url) => {
-    const link = document.createElement('a');
-    link.href = url;
-    link.setAttribute('download', '');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
   };
 
   const handleFreeClick = () => {
@@ -49,13 +42,41 @@ function SelectedProduct({ product }) {
           body: JSON.stringify({ email, permission })
         });
         console.log("Permission granted: Subscribing to Creator Agency Blueprint.");
+
+        // Show success popup
+        setEmailPopup(true);
+        setTimeout(() => setEmailPopup(false), 5000);
       }
     } catch (err) {
       console.error("Error sending email:", err);
     }
 
-    // Trigger download
-    triggerDownload("Ebooks/STARTER_KIT.pdf");
+
+    // Clear state
+    setEmail("");
+    setIsValidEmail(false);
+  };
+
+  // Handle Operator Program application
+  const handleOperatorClick = async () => {
+    console.log("Sending operator program application email to:", email);
+
+    try {
+      await fetch("http://localhost:3000/api/send-operator-program", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email })
+      });
+      console.log("Operator program application sent successfully.");
+
+      // Show success popup
+      setEmailPopup(true);
+      setTimeout(() => setEmailPopup(false), 5000);
+    } catch (err) {
+      console.error("Error sending operator program application:", err);
+    }
+
+
 
     // Clear state
     setEmail("");
@@ -98,7 +119,6 @@ function SelectedProduct({ product }) {
 
 
 
-
   return (
     <section id="selected-product" className={styles.selectedProductSection}>
       <PromotionalPopup
@@ -107,7 +127,13 @@ function SelectedProduct({ product }) {
         onConfirm={handlePopupConfirm}
       />
 
-      <div className={`section__inner ${styles.wrapper}`}>
+      {/* SUCCESS EMAIL POPUP */}
+      <EmailPopup 
+        isOpen={emailPopup} 
+        onClose={() => setEmailPopup(false)} 
+      />
+
+      <div className={`section__inner `}>
 
         {/* PRODUCT NAME CENTERED */}
         <h2 className={styles.title}>{product.name}</h2>
@@ -132,7 +158,7 @@ function SelectedProduct({ product }) {
                 />
 
                 <p className={styles.description}>{product.description}</p>
-
+                <p className={styles.message}>{message}</p>
                 {/* EMAIL FIELD */}
                 <input
                   type="email"
@@ -141,6 +167,7 @@ function SelectedProduct({ product }) {
                   value={email}
                   onChange={handleEmailChange}
                 />
+
 
                 {/* CTA BUTTON */}
                 {/* CTA BUTTON / DOWNLOAD LINK */}
@@ -153,15 +180,14 @@ function SelectedProduct({ product }) {
                     {product.cta}
                   </button>
                 ) : product.type === "apply" ? (
-                  <a href="Ebooks/Operator_Program.pdf" download>
-                    <button
-                      className={styles.ctaButton}
-                      disabled={!isValidEmail}
-                      onClick={() => { setEmail(""); setIsValidEmail(false); }}
-                    >
-                      {product.cta}
-                    </button>
-                  </a>
+
+                  <button
+                    className={styles.ctaButton}
+                    disabled={!isValidEmail}
+                    onClick={handleOperatorClick}
+                  >
+                    {product.cta}
+                  </button>
                 ) : (
                   <button
                     className={styles.ctaButton}
