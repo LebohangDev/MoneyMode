@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import styles from "./Home.module.css";
 import { motion } from "framer-motion";
 import { fadeIn, slideFromLeft, slideUp } from "../animations";
-import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
-import EmailPopup from "../EmailPopup/EmailPopup";
+import PromotionalPopup from "../Popups/PromotionalPopup/PromotionalPopup";
+import EmailPopup from "../Popups/EmailPopup/EmailPopup";
 
 function Home() {
   const [email, setEmail] = useState("");
@@ -39,7 +39,7 @@ function Home() {
 
     try {
       if (permission) {
-        await fetch("http://localhost:3000/api/send-starter-kit", {
+        await fetch("https://moebackend.onrender.com/api/send-starter-kit", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, permission })

@@ -8,6 +8,8 @@ import StarterKit from "./Starter Kit/StarterKit.jsx";
 import Products from './Products/Products.jsx';
 import Results from './Results/Results.jsx';
 
+
+
 import PaymentCancel from './paymentPopups/PaymentCancel.jsx';
 import PaymentSuccess from './paymentPopups/PaymentSuccess.jsx';
 import Contact from './Contact/Contact.jsx';
@@ -18,13 +20,13 @@ function App() {
 
   const [paymentActive, setPaymentActive] = useState(false);
 
-
-
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const payment = params.get("payment");
     if (payment === "success") setPaymentActive("PaymentSuccess");
     if (payment === "cancel") setPaymentActive("PaymentCancel");
+
+
   }, []);
   return (
     <div className="app">

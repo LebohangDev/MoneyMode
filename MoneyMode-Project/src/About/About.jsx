@@ -3,8 +3,8 @@ import React, { useState } from "react";
 import styles from "./About.module.css";
 import { motion } from "framer-motion";
 import { slideFromLeft, slideFromRight } from "../animations";
-import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
-import EmailPopup from "../EmailPopup/EmailPopup";
+import PromotionalPopup from "../Popups/PromotionalPopup/PromotionalPopup";
+import EmailPopup from "../Popups/EmailPopup/EmailPopup";
 
 function About() {
   const [email, setEmail] = useState("");

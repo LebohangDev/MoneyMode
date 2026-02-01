@@ -28,7 +28,7 @@ const PromotionalPopup = ({ isOpen, onClose, onConfirm }) => {
                         <h3 className={styles.title}>
                             Receive promotional content on Creator Agency blueprint?
                         </h3>
-                        <p>can be cancelled at any time on promotional email's</p>
+                        <p>can be cancelled at any time on promotional email</p>
 
                         <div className={styles.options}>
                             <label className={styles.label}>

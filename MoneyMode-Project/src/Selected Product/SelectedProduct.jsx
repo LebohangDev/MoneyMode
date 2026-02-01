@@ -1,8 +1,8 @@
 ﻿import React, { useState } from "react";
 import styles from "./SelectedProduct.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-import PromotionalPopup from "../PromotionalPopup/PromotionalPopup";
-import EmailPopup from "../EmailPopup/EmailPopup";
+import PromotionalPopup from "../Popups/PromotionalPopup/PromotionalPopup";
+import EmailPopup from "../Popups/EmailPopup/EmailPopup";
 
 function SelectedProduct({ product }) {
   const [email, setEmail] = useState("");
@@ -62,7 +62,7 @@ function SelectedProduct({ product }) {
     console.log("Sending operator program application email to:", email);
 
     try {
-      await fetch("http://localhost:3000/api/send-operator-program", {
+      await fetch("https://moebackend.onrender.com/api/send-operator-program", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email })
@@ -128,9 +128,9 @@ function SelectedProduct({ product }) {
       />
 
       {/* SUCCESS EMAIL POPUP */}
-      <EmailPopup 
-        isOpen={emailPopup} 
-        onClose={() => setEmailPopup(false)} 
+      <EmailPopup
+        isOpen={emailPopup}
+        onClose={() => setEmailPopup(false)}
       />
 
       <div className={`section__inner `}>
