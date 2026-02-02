@@ -24,7 +24,7 @@ const PRODUCTS = [
     tag: null,
     type: "paid",
     cta: "Buy Now",
-    price: 599,
+    price: 9,
     description:
       "A complete blueprint for building and scaling a profitable creator agency.",
     subtext: "The A-Z playbook to build and scale.",
