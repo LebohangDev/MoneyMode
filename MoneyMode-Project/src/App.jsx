@@ -25,11 +25,8 @@ const LandingPage = ({ paymentActive, setPaymentActive }) => {
   const location = useLocation();
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const pParam = params.get('p');
-
     // Check if path is /product OR if the 404 redirect param 'p' is /product
-    if (location.pathname === '/product' || pParam === '/product') {
+    if (location.pathname === '/product') {
       const element = document.getElementById('product');
       if (element) {
         setTimeout(() => {
