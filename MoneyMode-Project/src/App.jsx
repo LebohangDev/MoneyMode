@@ -16,7 +16,7 @@ import Contact from './Contact/Contact.jsx';
 import Gallery from './Gallery/Gallery.jsx';
 import Footer from './Footer/Footer.jsx';
 
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import SelectedProduct from './Selected Product/SelectedProduct.jsx';
 import { PRODUCTS } from './Products/Products.jsx';
 
@@ -81,7 +81,7 @@ function App() {
       </div>
 
       <Routes>
-        <Route path="/" element={<LandingPage paymentActive={paymentActive} setPaymentActive={setPaymentActive} />} />
+        <Route path="/" element={<Navigate to="/product" replace />} />
         <Route path="/product" element={<ProductPage />} />
       </Routes>
 
