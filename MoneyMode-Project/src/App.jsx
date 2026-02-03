@@ -21,28 +21,43 @@ import SelectedProduct from './Selected Product/SelectedProduct.jsx';
 import { PRODUCTS } from './Products/Products.jsx';
 
 // Component for the main landing page content
-const LandingPage = ({ paymentActive, setPaymentActive }) => (
-  <>
-    <div className="main">
-      <Home />
-      <About />
-      <Results />
-      <Video />
-      <StarterKit />
-      <Products />
-      {/* <Testimonials /> */}
-      <Contact />
-      <Gallery />
-      <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentSuccess setPaymentActive={setPaymentActive} />
-      </div>
+const LandingPage = ({ paymentActive, setPaymentActive }) => {
+  const location = useLocation();
 
-      <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
-        <PaymentCancel setPaymentActive={setPaymentActive} />
+  useEffect(() => {
+    if (location.pathname === '/product') {
+      const element = document.getElementById('product');
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
+  return (
+    <>
+      <div className="main">
+        <Home />
+        <About />
+        <Results />
+        <Video />
+        <StarterKit />
+        <Products />
+        {/* <Testimonials /> */}
+        <Contact />
+        <Gallery />
+        <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
+          <PaymentSuccess setPaymentActive={setPaymentActive} />
+        </div>
+
+        <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
+          <PaymentCancel setPaymentActive={setPaymentActive} />
+        </div>
       </div>
-    </div>
-  </>
-);
+    </>
+  );
+};
 
 // Component for the standalone Product page
 const ProductPage = () => {
@@ -81,8 +96,8 @@ function App() {
       </div>
 
       <Routes>
-        <Route path="/" element={<Navigate to="/product" replace />} />
-        <Route path="/product" element={<ProductPage />} />
+        <Route path="/" element={<LandingPage paymentActive={paymentActive} setPaymentActive={setPaymentActive} />} />
+        <Route path="/product" element={<LandingPage paymentActive={paymentActive} setPaymentActive={setPaymentActive} />} />
       </Routes>
 
       <div className="footer">
