@@ -70,8 +70,9 @@ function Contact() {
 
         {/* FINAL CONTACT BUTTON */}
         <motion.a
-          href="#contact"
-          className={styles.contactButton}
+          href="mailto:info@moneymode.ai"
+          className={styles.blockButtonWhite}
+          style={{ alignSelf: "center", marginTop: "20px" }}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

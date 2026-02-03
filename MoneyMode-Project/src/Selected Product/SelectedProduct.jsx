@@ -131,7 +131,7 @@ function SelectedProduct({ product }) {
         onClose={() => setEmailPopup(false)}
       />
 
-      <div className={`section__inner `}>
+      <div className={`section__inner ${styles.wrapper}`}>
 
         {/* PRODUCT NAME CENTERED */}
         <h2 className={styles.title}>{product.name}</h2>
