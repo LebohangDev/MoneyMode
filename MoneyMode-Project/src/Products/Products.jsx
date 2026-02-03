@@ -3,7 +3,7 @@ import styles from "./Products.module.css";
 import SelectedProduct from "../Selected Product/SelectedProduct";
 import { motion } from "framer-motion";
 
-const PRODUCTS = [
+export const PRODUCTS = [
   {
     id: "starter",
     name: "Starter Kit",
@@ -104,6 +104,7 @@ function Products() {
                   <p className={styles.step}>{product.step}</p>
 
                   {product.tag && <span className={styles.tag}>{product.tag}</span>}
+                  {product.price && <span className={styles.tag} style={{ color: "#d9d9d9", background: "rgba(0,0,0,0.6)" }}>${product.price} USD</span>}
 
                   <img src={product.image} alt={product.name} className={styles.image} />
 

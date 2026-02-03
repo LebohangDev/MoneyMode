@@ -16,9 +16,55 @@ import Contact from './Contact/Contact.jsx';
 import Gallery from './Gallery/Gallery.jsx';
 import Footer from './Footer/Footer.jsx';
 
+import { Routes, Route, useLocation } from 'react-router-dom';
+import SelectedProduct from './Selected Product/SelectedProduct.jsx';
+import { PRODUCTS } from './Products/Products.jsx';
+
+// Component for the main landing page content
+const LandingPage = ({ paymentActive, setPaymentActive }) => (
+  <>
+    <div className="main">
+      <Home />
+      <About />
+      <Results />
+      <Video />
+      <StarterKit />
+      <Products />
+      {/* <Testimonials /> */}
+      <Contact />
+      <Gallery />
+      <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
+        <PaymentSuccess setPaymentActive={setPaymentActive} />
+      </div>
+
+      <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
+        <PaymentCancel setPaymentActive={setPaymentActive} />
+      </div>
+    </div>
+  </>
+);
+
+// Component for the standalone Product page
+const ProductPage = () => {
+  // Default to the paid product (Ultimate Guide) as requested
+  const product = PRODUCTS.find(p => p.id === 'guide') || PRODUCTS[1];
+
+  // Scroll to top when this page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  return (
+    <div className="main" style={{ paddingTop: '80px', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <SelectedProduct product={product} />
+    </div>
+  );
+};
+
 function App() {
 
   const [paymentActive, setPaymentActive] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -34,32 +80,15 @@ function App() {
         <Nav className="nav" />
       </div>
 
-      <div className="main">
-        <Home />
-        <About />
-        <Results />
-        <Video />
-        <StarterKit />
-        <Products />
-        {/* <Testimonials /> */}
-        <Contact />
-        <Gallery />
-        <div className={paymentActive === 'PaymentSuccess' ? 'activeSection' : 'notActiveSection'}>
-          <PaymentSuccess setPaymentActive={setPaymentActive} />
-        </div>
-
-        <div className={paymentActive === 'PaymentCancel' ? 'activeSection' : 'notActiveSection'}>
-          <PaymentCancel setPaymentActive={setPaymentActive} />
-        </div>
-
-      </div>
+      <Routes>
+        <Route path="/" element={<LandingPage paymentActive={paymentActive} setPaymentActive={setPaymentActive} />} />
+        <Route path="/product" element={<ProductPage />} />
+      </Routes>
 
       <div className="footer">
         <Footer />
       </div>
     </div>
-
-
   );
 }
 
