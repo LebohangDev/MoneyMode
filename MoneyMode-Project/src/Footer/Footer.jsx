@@ -17,7 +17,7 @@ function Footer() {
 
         {/* BOTTOM ROW */}
         <div className={styles.bottomRow}>
-          <p className={styles.left}>Copyright © 2025</p>
+          <p className={styles.left}>Copyright © {new Date().getFullYear()}</p>
 
           <p className={styles.center}>Developed by Creators Blueprint</p>
 
